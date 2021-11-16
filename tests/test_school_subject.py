@@ -61,7 +61,7 @@ class test_SchoolSubject(unittest.TestCase):
     def test_edit_subject_false(self):
         assert_that(self.temp.edit_subject).raises(Exception).when_called_with(False)
 
-# Testy add_grade
+    # Testy add_grade
     def test_add_grade_2(self):
         assert_that(self.temp.add_grade(2)).is_equal_to({
             'name': 'Polski',
@@ -126,6 +126,7 @@ class test_SchoolSubject(unittest.TestCase):
     def test_add_grade_string_number(self):
         assert_that(self.temp.add_grade).raises(Exception).when_called_with('5')
 
+    # Testy edit_grade
     def test_edit_grade_3_to_1(self):
         assert_that(self.temp_with_grades.edit_grade(1, 1)).is_equal_to({
             'name': 'Matematyka',
@@ -292,3 +293,15 @@ class test_SchoolSubject(unittest.TestCase):
 
     def test_delete_grade_string_number(self):
         assert_that(self.temp.delete_grade).raises(Exception).when_called_with('5')
+
+    # Testy average_of_subject
+    def test_average_of_subject(self):
+        assert_that(self.temp_with_grades.average_of_subject()).is_equal_to(4.5)
+
+    def test_average_of_subject_2(self):
+        assert_that(self.temp_with_grades_2.average_of_subject()).is_equal_to(3.67)
+
+    def tearDown(self):
+        self.temp = None
+        self.temp_with_grades = None
+        self.temp_with_grades_2 = None
