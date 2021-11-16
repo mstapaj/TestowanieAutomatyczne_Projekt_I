@@ -21,6 +21,12 @@ class test_SchoolSubject(unittest.TestCase):
             'grades': []
         })
 
+    def test_get_details_2(self):
+        assert_that(self.temp_with_grades.get_details()).is_equal_to({
+            'name': 'Matematyka',
+            'grades': [3, 6]
+        })
+
     # Testy edit_subject
     def test_edit_subject_Matematyka(self):
         assert_that(self.temp.edit_subject('Matematyka')).is_equal_to({
