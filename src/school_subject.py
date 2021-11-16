@@ -18,3 +18,11 @@ class SchoolSubject:
                 'name': self.name,
                 'grades': self.grades
             }
+
+    def add_grade(self, grade):
+        if check_grade(grade):
+            self.grades.append(grade)
+            return {
+                'name': self.name,
+                'grades': self.grades
+            }
