@@ -1,5 +1,6 @@
 import unittest
 from assertpy import *
+from src.school_subject import SchoolSubject
 
 
 class test_SchoolSubject(unittest.TestCase):
