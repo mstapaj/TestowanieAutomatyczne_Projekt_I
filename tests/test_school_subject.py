@@ -224,3 +224,65 @@ class test_SchoolSubject(unittest.TestCase):
 
     def test_edit_grade_false(self):
         assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(False, False)
+
+    # Testy delete_grade
+    def test_delete_grade(self):
+        assert_that(self.temp_with_grades.delete_grade(1)).is_equal_to({
+            'name': 'Matematyka',
+            'grades': [6]
+        })
+
+    def test_delete_grade_2(self):
+        assert_that(self.temp_with_grades.delete_grade(2)).is_equal_to({
+            'name': 'Matematyka',
+            'grades': [3]
+        })
+
+    def test_delete_grade_3(self):
+        assert_that(self.temp_with_grades.delete_grade(2)).is_equal_to({
+            'name': 'Matematyka',
+            'grades': [3]
+        })
+        assert_that(self.temp_with_grades.delete_grade(1)).is_equal_to({
+            'name': 'Matematyka',
+            'grades': []
+        })
+
+    def test_delete_grade_out_of_range(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(0)
+
+    def test_delete_grade_out_of_range_2(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(3)
+
+    def test_delete_grade_out_of_range_8(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(8)
+
+    def test_delete_grade_negative_int(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(-2)
+
+    def test_delete_grade_negative_float(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(-3.1)
+
+    def test_delete_grade_float(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(2.45)
+
+    def test_delete_grade_object(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with({})
+
+    def test_delete_grade_array(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with([])
+
+    def test_delete_grade_none(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(None)
+
+    def test_delete_grade_true(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(True)
+
+    def test_delete_grade_false(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(False)
+
+    def test_delete_grade_string(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with('abc')
+
+    def test_delete_grade_string_number(self):
+        assert_that(self.temp.delete_grade).raises(Exception).when_called_with('5')
