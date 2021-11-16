@@ -1,5 +1,6 @@
 from src.checks.checks_school_subject import *
 
+
 class SchoolSubject:
     def __init__(self, name):
         self.name = name
@@ -26,3 +27,12 @@ class SchoolSubject:
                 'name': self.name,
                 'grades': self.grades
             }
+
+    def edit_grade(self, grade_id, grade):
+        if check_grade_id(grade_id, self):
+            if check_grade(grade):
+                self.grades[grade_id - 1] = grade
+                return {
+                    'name': self.name,
+                    'grades': self.grades
+                }
