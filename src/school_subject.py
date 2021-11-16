@@ -44,3 +44,12 @@ class SchoolSubject:
                 'name': self.name,
                 'grades': self.grades
             }
+
+    def average_of_subject(self):
+        summary = 0
+        for i in self.grades:
+            summary += i
+        if len(self.grades) <= 0:
+            return 0
+        else:
+            return round(summary / len(self.grades), 2)
