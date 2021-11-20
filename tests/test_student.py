@@ -1,5 +1,6 @@
 import unittest
 from hamcrest import *
+from src.student import Student
 
 class test_Student(unittest.TestCase):
     def setUp(self):
