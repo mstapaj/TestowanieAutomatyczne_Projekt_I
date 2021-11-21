@@ -138,3 +138,53 @@ class test_Student(unittest.TestCase):
 
     def test_edit_student_age_zero(self):
         assert_that(calling(self.temp.edit_student).with_args('Marcin', 'Nowak', 0), raises(Exception))
+
+    # Testy add_subject
+    def test_add_subject(self):
+        assert_that(self.temp.add_subject('Polski'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Polski']
+        }))
+
+    def test_add_subject_2(self):
+        assert_that(self.temp.add_subject('Matematyka'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Matematyka']
+        }))
+        assert_that(self.temp.add_subject('Polski'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Matematyka', 'Polski']
+        }))
+
+    def test_add_subject_none(self):
+        assert_that(calling(self.temp.add_subject).with_args(None), raises(Exception))
+
+    def test_add_subject_object(self):
+        assert_that(calling(self.temp.add_subject).with_args({}), raises(Exception))
+
+    def test_add_subject_array(self):
+        assert_that(calling(self.temp.add_subject).with_args([]), raises(Exception))
+
+    def test_add_subject_true(self):
+        assert_that(calling(self.temp.add_subject).with_args(True), raises(Exception))
+
+    def test_add_subject_false(self):
+        assert_that(calling(self.temp.add_subject).with_args(False), raises(Exception))
+
+    def test_add_subject_int(self):
+        assert_that(calling(self.temp.add_subject).with_args(12), raises(Exception))
+
+    def test_add_subject_float(self):
+        assert_that(calling(self.temp.add_subject).with_args(3.12), raises(Exception))
+
+    def test_add_subject_negative_int(self):
+        assert_that(calling(self.temp.add_subject).with_args(-8), raises(Exception))
+
+    def test_add_subject_negative_float(self):
+        assert_that(calling(self.temp.add_subject).with_args(-1.23), raises(Exception))
