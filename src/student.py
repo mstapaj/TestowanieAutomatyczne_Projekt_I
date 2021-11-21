@@ -47,3 +47,9 @@ class Student:
                 'age': self.age,
                 'subjects': result
             }
+
+    def get_subjects(self):
+        result = []
+        for i in self.subjects:
+            result.append(i.get_details()['name'])
+        return result
