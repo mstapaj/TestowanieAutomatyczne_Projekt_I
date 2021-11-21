@@ -5,6 +5,9 @@ from src.student import Student
 class test_Student(unittest.TestCase):
     def setUp(self):
         self.temp = Student('Jan', 'Kowalski', 12)
+        self.temp_with_subjects = Student('Paweł', 'Pawłowski', 15)
+        self.temp_with_subjects.add_subject('Matematyka')
+        self.temp_with_subjects.add_subject('Polski')
 
     # Testy get_details
     def test_get_details(self):
@@ -188,3 +191,6 @@ class test_Student(unittest.TestCase):
 
     def test_add_subject_negative_float(self):
         assert_that(calling(self.temp.add_subject).with_args(-1.23), raises(Exception))
+
+    def test_get_subjects(self):
+        assert_that(self.temp_with_subjects.get_subjects(), equal_to(['Matematyka', 'Polski']))
