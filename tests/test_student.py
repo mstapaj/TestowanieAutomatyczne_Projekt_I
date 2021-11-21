@@ -192,5 +192,103 @@ class test_Student(unittest.TestCase):
     def test_add_subject_negative_float(self):
         assert_that(calling(self.temp.add_subject).with_args(-1.23), raises(Exception))
 
+    # Testy get_subjects
     def test_get_subjects(self):
         assert_that(self.temp_with_subjects.get_subjects(), equal_to(['Matematyka', 'Polski']))
+
+    # Testy edit_subject
+    def test_edit_subject(self):
+        assert_that(self.temp_with_subjects.edit_subject(1, 'Angielski'), equal_to(['Angielski', 'Polski']))
+
+    def test_edit_subject_2(self):
+        assert_that(self.temp_with_subjects.edit_subject(2, 'Fizyka'), equal_to(['Matematyka', 'Fizyka']))
+
+    def test_edit_subject_none_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(None, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_none_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, None), raises(Exception))
+
+    def test_edit_subject_none(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(None, None), raises(Exception))
+
+    def test_edit_subject_object_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args({}, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_object_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, {}), raises(Exception))
+
+    def test_edit_subject_object(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args({}, {}), raises(Exception))
+
+    def test_edit_subject_array_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args([], 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_array_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, []), raises(Exception))
+
+    def test_edit_subject_array(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args([], []), raises(Exception))
+
+    def test_edit_subject_true_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(True, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_true_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, True), raises(Exception))
+
+    def test_edit_subject_true(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(True, True), raises(Exception))
+
+    def test_edit_subject_false_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(False, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_false_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, False), raises(Exception))
+
+    def test_edit_subject_false(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(False, False), raises(Exception))
+
+    def test_edit_subject_string_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args('abc', 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_string_number_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args('3', 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_int_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, 2), raises(Exception))
+
+    def test_edit_subject_string_subject_id_int_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args('32a', 5), raises(Exception))
+
+    def test_edit_subject_float_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(2.15, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_float_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, 3.87), raises(Exception))
+
+    def test_edit_subject_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1.32, 4.12), raises(Exception))
+
+    def test_edit_subject_negative_int_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(-3, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_negative_int_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, -1), raises(Exception))
+
+    def test_edit_subject_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(-2, -9), raises(Exception))
+
+    def test_edit_subject_negative_float_subject_id(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(-3.12, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_negative_float_name(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(1, -1.55), raises(Exception))
+
+    def test_edit_subject_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(-2.12, -9.65), raises(Exception))
+
+    def test_edit_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(0, 'Fizyka'), raises(Exception))
+
+    def test_edit_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.edit_subject).with_args(5, 'Fizyka'), raises(Exception))
