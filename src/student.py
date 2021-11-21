@@ -1,4 +1,4 @@
-from src.checks.checks_student import check_subject_name
+from src.checks.checks_student import check_subject_name,check_subject_id
 from src.school_subject import SchoolSubject
 
 class Student:
@@ -53,3 +53,12 @@ class Student:
         for i in self.subjects:
             result.append(i.get_details()['name'])
         return result
+
+    def edit_subject(self, subject_id, name):
+        if check_subject_id(subject_id, self):
+            if check_subject_name(name):
+                self.subjects[subject_id - 1].edit_subject(name)
+                result = []
+                for i in self.subjects:
+                    result.append(i.get_details()['name'])
+                return result
