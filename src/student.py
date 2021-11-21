@@ -1,3 +1,5 @@
+from src.checks.checks_student import check_subject_name
+from src.school_subject import SchoolSubject
 
 class Student:
     def __init__(self, firstname, lastname, age):
@@ -31,3 +33,17 @@ class Student:
             'lastname': self.lastname,
             'age': self.age
         }
+
+    def add_subject(self, subject):
+        if check_subject_name(subject):
+            temp = SchoolSubject(subject)
+            self.subjects.append(temp)
+            result = []
+            for i in self.subjects:
+                result.append(i.get_details()['name'])
+            return {
+                'firstname': self.firstname,
+                'lastname': self.lastname,
+                'age': self.age,
+                'subjects': result
+            }
