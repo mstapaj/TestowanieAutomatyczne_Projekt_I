@@ -512,3 +512,118 @@ class test_Student(unittest.TestCase):
 
     def test_get_grades_negative_float(self):
         assert_that(calling(self.temp_with_grades.get_grades).with_args(-4.22), raises(Exception))
+
+    # Testy edit_grade
+    def test_edit_grade(self):
+        assert_that(self.temp_with_grades.edit_grade(1, 1, 6), equal_to([6, 5]))
+
+    def test_edit_grade_2(self):
+        assert_that(self.temp_with_grades.edit_grade(2, 1, 1), equal_to([1]))
+
+    def test_edit_grade_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(0, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(6, 1, 4), raises(Exception))
+
+    def test_edit_grade_id_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 0, 4), raises(Exception))
+
+    def test_edit_grade_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 4, 4), raises(Exception))
+
+    def test_edit_grade_grade_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, -2), raises(Exception))
+
+    def test_edit_grade_grade_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, 8), raises(Exception))
+
+    def test_edit_grade_subject_id_none(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(None, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_object(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args({}, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_array(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args([], 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_true(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(True, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_false(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(False, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_string(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args('abc', 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_string_number(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args('3', 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(2.31, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(-3, 1, 4), raises(Exception))
+
+    def test_edit_grade_subject_id_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(-2.16, 1, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_none(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, None, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_object(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, {}, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_array(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, [], 4), raises(Exception))
+
+    def test_edit_grade_grade_id_true(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, True, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_false(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, False, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_string(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 'abc', 4), raises(Exception))
+
+    def test_edit_grade_grade_id_string_number(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, '3', 4), raises(Exception))
+
+    def test_edit_grade_grade_id_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 2.31, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, -1, 4), raises(Exception))
+
+    def test_edit_grade_grade_id_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, -2.16, 4), raises(Exception))
+
+    def test_edit_grade_grade_none(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, None), raises(Exception))
+
+    def test_edit_grade_grade_object(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, {}), raises(Exception))
+
+    def test_edit_grade_grade_array(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, []), raises(Exception))
+
+    def test_edit_grade_grade_true(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, True), raises(Exception))
+
+    def test_edit_grade_grade_false(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, False), raises(Exception))
+
+    def test_edit_grade_grade_string(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, 'abc'), raises(Exception))
+
+    def test_edit_grade_grade_string_number(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, '3'), raises(Exception))
+
+    def test_edit_grade_grade_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, 2.31), raises(Exception))
+
+    def test_edit_grade_grade_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, -1), raises(Exception))
+
+    def test_edit_grade_grade_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.edit_grade).with_args(1, 1, -2.16), raises(Exception))
