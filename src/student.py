@@ -81,3 +81,7 @@ class Student:
                     temp = i.get_details()
                     result[temp['name']] = temp['grades']
                 return result
+
+    def get_grades(self, subject_id):
+        if check_subject_id(subject_id, self):
+            return self.subjects[subject_id - 1].get_details()['grades']
