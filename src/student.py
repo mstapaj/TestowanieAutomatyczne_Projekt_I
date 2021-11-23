@@ -1,5 +1,6 @@
-from src.checks.checks_student import check_subject_name,check_subject_id
+from src.checks.checks_student import check_subject_name, check_subject_id
 from src.school_subject import SchoolSubject
+
 
 class Student:
     def __init__(self, firstname, lastname, age):
@@ -62,3 +63,11 @@ class Student:
                 for i in self.subjects:
                     result.append(i.get_details()['name'])
                 return result
+
+    def delete_subject(self, subject_id):
+        if check_subject_id(subject_id, self):
+            self.subjects.pop(subject_id - 1)
+            result = []
+            for i in self.subjects:
+                result.append(i.get_details()['name'])
+            return result
