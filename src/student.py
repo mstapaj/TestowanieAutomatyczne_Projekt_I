@@ -1,4 +1,4 @@
-from src.checks.checks_student import check_subject_name, check_subject_id
+from src.checks.checks_student import check_subject_name, check_subject_id, check_grade
 from src.school_subject import SchoolSubject
 
 
@@ -71,3 +71,13 @@ class Student:
             for i in self.subjects:
                 result.append(i.get_details()['name'])
             return result
+
+    def add_grade(self, subject_id, grade):
+        if check_subject_id(subject_id, self):
+            if check_grade(grade):
+                self.subjects[subject_id - 1].add_grade(grade)
+                result = {}
+                for i in self.subjects:
+                    temp = i.get_details()
+                    result[temp['name']] = temp['grades']
+                return result
