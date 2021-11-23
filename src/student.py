@@ -1,4 +1,4 @@
-from src.checks.checks_student import check_subject_name, check_subject_id, check_grade
+from src.checks.checks_student import check_subject_name, check_subject_id, check_grade, check_grade_id
 from src.school_subject import SchoolSubject
 
 
@@ -85,3 +85,9 @@ class Student:
     def get_grades(self, subject_id):
         if check_subject_id(subject_id, self):
             return self.subjects[subject_id - 1].get_details()['grades']
+
+    def edit_grade(self, subject_id, grade_id, grade):
+        if check_subject_id(subject_id, self):
+            if check_grade_id(subject_id, grade_id, self):
+                if check_grade(grade):
+                    return self.subjects[subject_id - 1].edit_grade(grade_id, grade)['grades']
