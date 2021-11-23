@@ -91,3 +91,8 @@ class Student:
             if check_grade_id(subject_id, grade_id, self):
                 if check_grade(grade):
                     return self.subjects[subject_id - 1].edit_grade(grade_id, grade)['grades']
+
+    def delete_grade(self, subject_id, grade_id):
+        if check_subject_id(subject_id, self):
+            if check_grade_id(subject_id, grade_id, self):
+                return self.subjects[subject_id - 1].delete_grade(grade_id)['grades']
