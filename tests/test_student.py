@@ -292,3 +292,50 @@ class test_Student(unittest.TestCase):
 
     def test_edit_subject_id_out_of_range_2(self):
         assert_that(calling(self.temp_with_subjects.edit_subject).with_args(5, 'Fizyka'), raises(Exception))
+
+    # Testy delete_subject
+    def test_delete_subject(self):
+        assert_that(self.temp_with_subjects.delete_subject(1), equal_to(['Polski']))
+
+    def test_delete_subject_2(self):
+        assert_that(self.temp_with_subjects.delete_subject(2), equal_to(['Matematyka']))
+
+    def test_delete_subject_3(self):
+        assert_that(self.temp_with_subjects.delete_subject(2), equal_to(['Matematyka']))
+        assert_that(self.temp_with_subjects.delete_subject(1), equal_to([]))
+
+    def test_delete_subject_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(0), raises(Exception))
+
+    def test_delete_subject_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(3), raises(Exception))
+
+    def test_delete_subject_none(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(None), raises(Exception))
+
+    def test_delete_subject_object(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args({}), raises(Exception))
+
+    def test_delete_subject_array(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args([]), raises(Exception))
+
+    def test_delete_subject_true(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(True), raises(Exception))
+
+    def test_delete_subject_false(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(False), raises(Exception))
+
+    def test_delete_subject_string(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args('abc'), raises(Exception))
+
+    def test_delete_subject_string_number(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args('2'), raises(Exception))
+
+    def test_delete_subject_float(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(2.15), raises(Exception))
+
+    def test_delete_subject_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(-3), raises(Exception))
+
+    def test_delete_subject_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.delete_subject).with_args(-3.45), raises(Exception))
