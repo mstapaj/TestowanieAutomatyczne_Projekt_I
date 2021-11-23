@@ -339,3 +339,127 @@ class test_Student(unittest.TestCase):
 
     def test_delete_subject_negative_float(self):
         assert_that(calling(self.temp_with_subjects.delete_subject).with_args(-3.45), raises(Exception))
+
+    # Testy add_grade
+
+    def test_add_grade(self):
+        assert_that(self.temp_with_subjects.add_grade(1, 4), equal_to({
+            'Matematyka': [4],
+            'Polski': []
+        }))
+
+    def test_add_grade_2(self):
+        assert_that(self.temp_with_subjects.add_grade(2, 3), equal_to({
+            'Matematyka': [],
+            'Polski': [3]
+        }))
+
+    def test_add_grade_3(self):
+        assert_that(self.temp_with_subjects.add_grade(2, 3), equal_to({
+            'Matematyka': [],
+            'Polski': [3]
+        }))
+        assert_that(self.temp_with_subjects.add_grade(1, 5), equal_to({
+            'Matematyka': [5],
+            'Polski': [3]
+        }))
+
+    def test_add_grade_4(self):
+        assert_that(self.temp_with_subjects.add_grade(2, 3), equal_to({
+            'Matematyka': [],
+            'Polski': [3]
+        }))
+        assert_that(self.temp_with_subjects.add_grade(2, 5), equal_to({
+            'Matematyka': [],
+            'Polski': [3, 5]
+        }))
+
+    def test_add_grade_id_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(0, 4), raises(Exception))
+
+    def test_add_grade_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(6, 4), raises(Exception))
+
+    def test_add_grade_grade_out_of_range(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, -2), raises(Exception))
+
+    def test_add_grade_grade_out_of_range_2(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, 8), raises(Exception))
+
+    def test_add_grade_none_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(None, 3), raises(Exception))
+
+    def test_add_grade_none_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, None), raises(Exception))
+
+    def test_add_grade_none(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(None, None), raises(Exception))
+
+    def test_add_grade_object_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args({}, 3), raises(Exception))
+
+    def test_add_grade_object_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, {}), raises(Exception))
+
+    def test_add_grade_object(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args({}, {}), raises(Exception))
+
+    def test_add_grade_true_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(True, 3), raises(Exception))
+
+    def test_add_grade_true_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, True), raises(Exception))
+
+    def test_add_grade_true(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(True, True), raises(Exception))
+
+    def test_add_grade_false_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(False, 3), raises(Exception))
+
+    def test_add_grade_false_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, False), raises(Exception))
+
+    def test_add_grade_false(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(False, False), raises(Exception))
+
+    def test_add_grade_string_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args('abc', 3), raises(Exception))
+
+    def test_add_grade_string_number_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args('2', 3), raises(Exception))
+
+    def test_add_grade_string_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(2, 'abc'), raises(Exception))
+
+    def test_add_grade_string_number_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(2, '3'), raises(Exception))
+
+    def test_add_grade_string(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args('b2', '3a'), raises(Exception))
+
+    def test_add_grade_float_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(2.31, 3), raises(Exception))
+
+    def test_add_grade_float_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, 1.67), raises(Exception))
+
+    def test_add_grade_float(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(3.12, 4.33), raises(Exception))
+
+    def test_add_grade_negative_int_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(-3, 3), raises(Exception))
+
+    def test_add_grade_negative_int_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, -8), raises(Exception))
+
+    def test_add_grade_negative_int(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(-2, -5), raises(Exception))
+
+    def test_add_grade_negative_float_id(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(-2.31, 3), raises(Exception))
+
+    def test_add_grade_negative_float_grade(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(1, -1.67), raises(Exception))
+
+    def test_add_grade_negative_float(self):
+        assert_that(calling(self.temp_with_subjects.add_grade).with_args(-3.12, -4.33), raises(Exception))
