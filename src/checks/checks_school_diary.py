@@ -37,3 +37,14 @@ def check_subject_name(name):
         return True
     else:
         raise Exception('Nazwa przedmiotu nie jest typu string')
+
+
+def check_subject_id(id, subject_id, object):
+    if isinstance(subject_id, int) and str(subject_id) != 'True' and str(subject_id) != 'False':
+        number_of_subjects = len(object.students[id - 1].get_subjects())
+        if 0 < subject_id < number_of_subjects + 1:
+            return True
+        else:
+            raise Exception('Brak przedmiotu o takim Id')
+    else:
+        raise Exception('Id przedmiotu nie jest typu int')
