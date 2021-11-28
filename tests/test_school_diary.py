@@ -116,3 +116,137 @@ class test_school_diary(unittest.TestCase):
 
     def test_show_students_2(self):
         assert_that(self.temp.show_students(), equal_to([]))
+
+    # Testy edit_student
+    def test_edit_student(self):
+        assert_that(self.temp_with_students.edit_student(1, firstname='Marcin', lastname='Nowak', age=10), equal_to({
+            'firstname': 'Marcin',
+            'lastname': 'Nowak',
+            'age': 10
+        }))
+
+    def test_edit_student_without_age(self):
+        assert_that(self.temp_with_students.edit_student(1, firstname='Marcin', lastname='Nowak'), equal_to({
+            'firstname': 'Marcin',
+            'lastname': 'Nowak',
+            'age': 12
+        }))
+
+    def test_edit_student_without_lastname(self):
+        assert_that(self.temp_with_students.edit_student(1, firstname='Marcin', age=10), equal_to({
+            'firstname': 'Marcin',
+            'lastname': 'Kowalski',
+            'age': 10
+        }))
+
+    def test_edit_student_without_firstname(self):
+        assert_that(self.temp_with_students.edit_student(1, lastname='Nowak', age=10), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Nowak',
+            'age': 10
+        }))
+
+    def test_edit_student_without_firstname_lastname(self):
+        assert_that(self.temp_with_students.edit_student(1, age=10), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 10
+        }))
+
+    def test_edit_student_without_firstname_age(self):
+        assert_that(self.temp_with_students.edit_student(1, lastname='Nowak'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Nowak',
+            'age': 12
+        }))
+
+    def test_edit_student_without_lastname_age(self):
+        assert_that(self.temp_with_students.edit_student(1, firstname='Marcin'), equal_to({
+            'firstname': 'Marcin',
+            'lastname': 'Kowalski',
+            'age': 12
+        }))
+
+    def test_edit_student_firstname_object(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, {}, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_array(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, [], 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_true(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, True, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_false(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, False, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_int(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 12, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_float(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 3.14, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_int_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, -12, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_firstname_float_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, -2.56, 'Nowak', 10), raises(Exception))
+
+    def test_edit_student_lastname_object(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', {}, 10), raises(Exception))
+
+    def test_edit_student_lastname_array(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', [], 10), raises(Exception))
+
+    def test_edit_student_lastname_true(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', True, 10), raises(Exception))
+
+    def test_edit_student_lastname_false(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', False, 10), raises(Exception))
+
+    def test_edit_student_lastname_int(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 31, 10), raises(Exception))
+
+    def test_edit_student_lastname_float(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 2.13, 10), raises(Exception))
+
+    def test_edit_student_lastname_int_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', -12, 10), raises(Exception))
+
+    def test_edit_student_lastname_float_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', -2.45, 10), raises(Exception))
+
+    def test_edit_student_age_object(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', {}),
+                    raises(Exception))
+
+    def test_edit_student_age_array(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', []),
+                    raises(Exception))
+
+    def test_edit_student_age_true(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', True),
+                    raises(Exception))
+
+    def test_edit_student_age_false(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', False),
+                    raises(Exception))
+
+    def test_edit_student_age_string(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', 'abc'),
+                    raises(Exception))
+
+    def test_edit_student_age_string_number(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', '23'),
+                    raises(Exception))
+
+    def test_edit_student_age_int_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', -2),
+                    raises(Exception))
+
+    def test_edit_student_age_float_negative(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', -1.0),
+                    raises(Exception))
+
+    def test_edit_student_age_zero(self):
+        assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', 0), raises(Exception))
+
