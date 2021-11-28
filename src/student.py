@@ -100,3 +100,23 @@ class Student:
     def average_of_subject(self, subject_id):
         if check_subject_id(subject_id, self):
             return self.subjects[subject_id - 1].average_of_subject()
+
+    def average_of_student(self):
+        summary = 0
+        for i in self.subjects:
+            avg = i.average_of_subject()
+            if 0 <= avg < 1.51:
+                summary += 1
+            elif 1.51 <= avg < 2.51:
+                summary += 2
+            elif 2.51 <= avg < 3.51:
+                summary += 3
+            elif 3.51 <= avg < 4.51:
+                summary += 4
+            elif 4.51 <= avg < 5.51:
+                summary += 5
+            elif 5.51 <= avg <= 6:
+                summary += 6
+            else:
+                raise Exception('Średnia nie jest z przedziału 0-6')
+        return round(summary / len(self.subjects), 2)
