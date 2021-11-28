@@ -302,3 +302,122 @@ class test_school_diary(unittest.TestCase):
 
     def test_delete_student_negative_float(self):
         assert_that(calling(self.temp_with_students.delete_student).with_args(-3.45), raises(Exception))
+
+    # Testy add_subject
+    def test_add_subject_to_student(self):
+        assert_that(self.temp_with_students.add_subject_to_student(1, 'Polski'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Polski']
+        }))
+
+    def test_add_subject_to_student_2(self):
+        assert_that(self.temp_with_students.add_subject_to_student(1, 'Matematyka'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Matematyka']
+        }))
+        assert_that(self.temp_with_students.add_subject_to_student(1, 'Polski'), equal_to({
+            'firstname': 'Jan',
+            'lastname': 'Kowalski',
+            'age': 12,
+            'subjects': ['Matematyka', 'Polski']
+        }))
+
+    def test_add_subject_to_student_none_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(None, 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_none_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, None), raises(Exception))
+
+    def test_add_subject_to_student_none(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(None, None), raises(Exception))
+
+    def test_add_subject_to_student_object_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args({}, 'Fizyka'), raises(Exception))
+
+    def test_add_subject_to_student_object_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, {}), raises(Exception))
+
+    def test_add_subject_to_student_object(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args({}, {}), raises(Exception))
+
+    def test_add_subject_to_student_array_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args([], 'Fizyka'), raises(Exception))
+
+    def test_add_subject_to_student_array_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, []), raises(Exception))
+
+    def test_add_subject_to_student_array(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args([], []), raises(Exception))
+
+    def test_add_subject_to_student_true_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(True, 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_true_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, True), raises(Exception))
+
+    def test_add_subject_to_student_true(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(True, True), raises(Exception))
+
+    def test_add_subject_to_student_false_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(False, 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_false_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, False), raises(Exception))
+
+    def test_add_subject_to_student_false(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(False, False), raises(Exception))
+
+    def test_add_subject_to_student_string_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args('abc', 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_string_number_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args('3', 'Fizyka'), raises(Exception))
+
+    def test_add_subject_to_student_int_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, 2), raises(Exception))
+
+    def test_add_subject_to_student_string_subject_id_int_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args('32a', 5), raises(Exception))
+
+    def test_add_subject_to_student_float_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(2.15, 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_float_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, 3.87), raises(Exception))
+
+    def test_add_subject_to_student_float(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1.32, 4.12), raises(Exception))
+
+    def test_add_subject_to_student_negative_int_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(-3, 'Fizyka'), raises(Exception))
+
+    def test_add_subject_to_student_negative_int_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, -1), raises(Exception))
+
+    def test_add_subject_to_student_negative_int(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(-2, -9), raises(Exception))
+
+    def test_add_subject_to_student_negative_float_subject_id(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(-3.12, 'Fizyka'),
+                    raises(Exception))
+
+    def test_add_subject_to_student_negative_float_name(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(1, -1.55), raises(Exception))
+
+    def test_add_subject_to_student_negative_float(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(-2.12, -9.65), raises(Exception))
+
+    def test_add_subject_to_student_id_out_of_range(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(0, 'Fizyka'), raises(Exception))
+
+    def test_add_subject_to_student_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(5, 'Fizyka'), raises(Exception))
