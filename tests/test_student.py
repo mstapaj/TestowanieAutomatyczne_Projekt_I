@@ -725,3 +725,46 @@ class test_Student(unittest.TestCase):
 
     def test_delete_grade_negative_float(self):
         assert_that(calling(self.temp_with_subjects.delete_grade).with_args(-3.12, -4.33), raises(Exception))
+
+    # Testy average_of_subject
+    def test_average_of_subject(self):
+        assert_that(self.temp_with_grades.average_of_subject(1), equal_to(3.5))
+
+    def test_average_of_subject_2(self):
+        assert_that(self.temp_with_grades.average_of_subject(2), equal_to(2))
+
+    def test_average_of_subject_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(-1), raises(Exception))
+
+    def test_average_of_subject_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(4), raises(Exception))
+
+    def test_average_of_subject_none(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(None), raises(Exception))
+
+    def test_average_of_subject_object(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args({}), raises(Exception))
+
+    def test_average_of_subject_array(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args([]), raises(Exception))
+
+    def test_average_of_subject_true(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(True), raises(Exception))
+
+    def test_average_of_subject_false(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(False), raises(Exception))
+
+    def test_average_of_subject_string(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args('abc'), raises(Exception))
+
+    def test_average_of_subject_string_number(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args('12'), raises(Exception))
+
+    def test_average_of_subject_float(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(2.12), raises(Exception))
+
+    def test_average_of_subject_negative_int(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(-4), raises(Exception))
+
+    def test_average_of_subject_negative_float(self):
+        assert_that(calling(self.temp_with_grades.average_of_subject).with_args(-4.22), raises(Exception))
