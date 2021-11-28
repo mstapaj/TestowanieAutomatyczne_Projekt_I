@@ -17,3 +17,9 @@ class SchoolDiary:
                     for i in self.students:
                         result.append(i.get_details())
                     return result
+
+    def show_students(self):
+        result = []
+        for i in self.students:
+            result.append(i.get_details())
+        return result
