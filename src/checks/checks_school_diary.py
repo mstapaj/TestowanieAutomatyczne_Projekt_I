@@ -20,3 +20,13 @@ def check_age(age):
             raise Exception('Wiek jest poniżej 0')
     else:
         raise Exception('Błedny typ danych w wieku')
+
+
+def check_id(id, object):
+    if isinstance(id, int) and str(id) != 'True' and str(id) != 'False':
+        if 0 < id < len(object.students) + 1:
+            return True
+        else:
+            raise Exception('Brak ucznia o takim Id')
+    else:
+        raise Exception('Id ucznia nie jest typu int')

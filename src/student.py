@@ -1,4 +1,5 @@
-from src.checks.checks_student import check_subject_name, check_subject_id, check_grade, check_grade_id
+from src.checks.checks_student import check_subject_id, check_grade_id
+from src.school_subject import check_grade,check_subject_name
 from src.school_subject import SchoolSubject
 
 
