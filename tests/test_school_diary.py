@@ -11,6 +11,10 @@ class test_school_diary(unittest.TestCase):
         self.temp_with_students = SchoolDiary()
         self.temp_with_students.add_student('Jan', 'Kowalski', 12)
         self.temp_with_students.add_student('Ola', 'Kot', 17)
+        self.temp_with_student_with_subject = SchoolDiary()
+        self.temp_with_student_with_subject.add_student('Paweł', 'Pawłowski', 15)
+        self.temp_with_student_with_subject.add_subject_to_student(1, 'Matematyka')
+        self.temp_with_student_with_subject.add_subject_to_student(1, 'Polski')
 
     # Testy add_student
     def test_add_student(self):
@@ -421,3 +425,56 @@ class test_school_diary(unittest.TestCase):
 
     def test_add_subject_to_student_id_out_of_range_2(self):
         assert_that(calling(self.temp_with_students.add_subject_to_student).with_args(5, 'Fizyka'), raises(Exception))
+
+    # Testy get_subjects_from_student
+    def test_get_subjects_from_student(self):
+        assert_that(self.temp_with_student_with_subject.get_subjects_from_student(1),
+                    equal_to(['Matematyka', 'Polski']))
+
+    def test_get_subjects_from_student_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(0),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(3),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(None),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args({}),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args([]),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(True),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(False),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args('abc'),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args('2'),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(2.15),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(-3),
+                    raises(Exception))
+
+    def test_get_subjects_from_student_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(-3.45),
+                    raises(Exception))
