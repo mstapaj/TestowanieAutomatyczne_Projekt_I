@@ -478,3 +478,144 @@ class test_school_diary(unittest.TestCase):
     def test_get_subjects_from_student_negative_float(self):
         assert_that(calling(self.temp_with_student_with_subject.get_subjects_from_student).with_args(-3.45),
                     raises(Exception))
+
+    # Testy edit_subject_in_student
+    def test_edit_subject_in_student(self):
+        assert_that(self.temp_with_student_with_subject.edit_subject_in_student(1, 1, 'Fizyka'),
+                    equal_to(['Fizyka', 'Polski']))
+
+    def test_edit_subject_in_student_2(self):
+        assert_that(self.temp_with_student_with_subject.edit_subject_in_student(1, 2, 'Biologia'),
+                    equal_to(['Matematyka', 'Biologia']))
+
+    def test_edit_subject_in_student_id_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(0, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(4, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 0, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 6, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(None, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args({}, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args([], 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(True, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(False, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args('abc', 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args('2', 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(2.14, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(-3, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_id_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(-2.51, 1, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, None, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, {}, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, [], 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, True, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, False, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 'abc', 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, '3', 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 2.14, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, -3, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_subject_id_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, -2.51, 'Fizyka'),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, None),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, {}),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, []),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, True),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, False),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, 3),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, 3.14),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, -4),
+                    raises(Exception))
+
+    def test_edit_subject_in_student_name_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.edit_subject_in_student).with_args(1, 1, -4.11),
+                    raises(Exception))
