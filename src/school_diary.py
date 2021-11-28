@@ -52,3 +52,8 @@ class SchoolDiary:
             for i in self.students:
                 result.append(i.get_details())
             return result
+
+    def add_subject_to_student(self, id, name):
+        if check_id(id, self):
+            if check_subject_name(name):
+                return self.students[id - 1].add_subject(name)
