@@ -8,6 +8,9 @@ class test_school_diary(unittest.TestCase):
 
     def setUp(self):
         self.temp = SchoolDiary()
+        self.temp_with_students = SchoolDiary()
+        self.temp_with_students.add_student('Jan', 'Kowalski', 12)
+        self.temp_with_students.add_student('Ola', 'Kot', 17)
 
     # Testy add_student
     def test_add_student(self):
@@ -103,3 +106,13 @@ class test_school_diary(unittest.TestCase):
 
     def test_add_student_age_zero(self):
         assert_that(calling(self.temp.add_student).with_args('Marcin', 'Nowak', 0), raises(Exception))
+
+    # Testy show_students
+    def test_show_students(self):
+        assert_that(self.temp_with_students.show_students(), equal_to([
+            {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12},
+            {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17}
+        ]))
+
+    def test_show_students_2(self):
+        assert_that(self.temp.show_students(), equal_to([]))
