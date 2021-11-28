@@ -768,3 +768,15 @@ class test_Student(unittest.TestCase):
 
     def test_average_of_subject_negative_float(self):
         assert_that(calling(self.temp_with_grades.average_of_subject).with_args(-4.22), raises(Exception))
+
+    # Testy average_of_student
+    def test_average_of_student(self):
+        assert_that(self.temp_with_grades.average_of_student(), equal_to(2.5))
+
+    def test_average_of_student_2(self):
+        assert_that(self.temp_with_subjects.average_of_student(), equal_to(1.0))
+
+    def tearDown(self):
+        self.temp = None
+        self.temp_with_subjects = None
+        self.temp_with_grades = None
