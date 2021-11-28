@@ -250,3 +250,55 @@ class test_school_diary(unittest.TestCase):
     def test_edit_student_age_zero(self):
         assert_that(calling(self.temp_with_students.edit_student).with_args(1, 'Marcin', 'Nowak', 0), raises(Exception))
 
+    # Testy delete_student
+    def test_delete_student(self):
+        assert_that(self.temp_with_students.delete_student(1), equal_to([
+            {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17}
+        ]))
+
+    def test_delete_student_2(self):
+        assert_that(self.temp_with_students.delete_student(2), equal_to([
+            {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}
+        ]))
+
+    def test_delete_student_3(self):
+        assert_that(self.temp_with_students.delete_student(2), equal_to([
+            {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}
+        ]))
+        assert_that(self.temp_with_students.delete_student(1), equal_to([]))
+
+    def test_delete_student_out_of_range(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(0), raises(Exception))
+
+    def test_delete_student_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(3), raises(Exception))
+
+    def test_delete_student_none(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(None), raises(Exception))
+
+    def test_delete_student_object(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args({}), raises(Exception))
+
+    def test_delete_student_array(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args([]), raises(Exception))
+
+    def test_delete_student_true(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(True), raises(Exception))
+
+    def test_delete_student_false(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(False), raises(Exception))
+
+    def test_delete_student_string(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args('abc'), raises(Exception))
+
+    def test_delete_student_string_number(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args('2'), raises(Exception))
+
+    def test_delete_student_float(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(2.15), raises(Exception))
+
+    def test_delete_student_negative_int(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(-3), raises(Exception))
+
+    def test_delete_student_negative_float(self):
+        assert_that(calling(self.temp_with_students.delete_student).with_args(-3.45), raises(Exception))
