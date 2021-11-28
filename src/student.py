@@ -96,3 +96,7 @@ class Student:
         if check_subject_id(subject_id, self):
             if check_grade_id(subject_id, grade_id, self):
                 return self.subjects[subject_id - 1].delete_grade(grade_id)['grades']
+
+    def average_of_subject(self, subject_id):
+        if check_subject_id(subject_id, self):
+            return self.subjects[subject_id - 1].average_of_subject()
