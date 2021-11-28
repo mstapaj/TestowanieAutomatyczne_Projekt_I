@@ -44,3 +44,11 @@ class SchoolDiary:
             elif age != None:
                 raise Exception('Błedny typ danych w wieku')
             return self.students[id - 1].edit_student(temp['firstname'], temp['lastname'], temp['age'])
+
+    def delete_student(self, id):
+        if check_id(id, self):
+            self.students.pop(id - 1)
+            result = []
+            for i in self.students:
+                result.append(i.get_details())
+            return result
