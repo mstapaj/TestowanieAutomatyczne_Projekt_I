@@ -15,6 +15,13 @@ class test_school_diary(unittest.TestCase):
         self.temp_with_student_with_subject.add_student('Paweł', 'Pawłowski', 15)
         self.temp_with_student_with_subject.add_subject_to_student(1, 'Matematyka')
         self.temp_with_student_with_subject.add_subject_to_student(1, 'Polski')
+        self.temp_with_student_with_subject_with_grades = SchoolDiary()
+        self.temp_with_student_with_subject_with_grades.add_student('Paweł', 'Pawłowski', 15)
+        self.temp_with_student_with_subject_with_grades.add_subject_to_student(1, 'Matematyka')
+        self.temp_with_student_with_subject_with_grades.add_subject_to_student(1, 'Polski')
+        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 2)
+        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 5)
+        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 2, 2)
 
     # Testy add_student
     def test_add_student(self):
@@ -921,3 +928,178 @@ class test_school_diary(unittest.TestCase):
     def test_add_grade_in_student_in_subject_grade_negative_float(self):
         assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, -2.16),
                     raises(Exception))
+
+    # Testy get_grades_in_student_from_subject
+    def test_get_grades_in_student_from_subject(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject(1, 1),
+                    equal_to([2, 5]))
+
+    def test_get_grades_in_student_from_subject_2(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject(1, 2),
+                    equal_to([2]))
+
+    def test_get_grades_in_student_from_subject_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(0, 1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(4, 1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_none_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(None,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_none_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  None),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_none(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(None,
+                                                                                                                  None),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_object_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args({},
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_object_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  {}),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_object(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args({},
+                                                                                                                  {}),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_true_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(True,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_true_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  True),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_true(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(True,
+                                                                                                                  True),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_false_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(False,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_false_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  False),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_false(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(False,
+                                                                                                                  False),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_string_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args('abc',
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_string_number_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args('2',
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_string_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(2,
+                                                                                                                  'abc'),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_string_number_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(2,
+                                                                                                                  '3'),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_string(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args('b2',
+                                                                                                                  '3a'),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_float_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(2.31,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_float_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  1.67),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(3.12,
+                                                                                                                  4.33),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_int_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(-3,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_int_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  -8),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_int(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(-2,
+                                                                                                                  -5),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_float_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(-2.31,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_float_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(1,
+                                                                                                                  -1.67),
+            raises(Exception))
+
+    def test_get_grades_in_student_from_subject_negative_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.get_grades_in_student_from_subject).with_args(-3.12,
+                                                                                                                  -4.33),
+            raises(Exception))
