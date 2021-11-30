@@ -1668,3 +1668,156 @@ class test_school_diary(unittest.TestCase):
             calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
                                                                                                                   -2.16),
             raises(Exception))
+
+    # Testy average_of_subject_in_student
+    def test_average_of_subject_in_student(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student(1, 1), equal_to(3.5))
+
+    def test_average_of_subject_in_student_2(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student(1, 2), equal_to(2))
+
+    def test_average_of_subject_in_student_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(0, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(4, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_none_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(None, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_none_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, None),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_none(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(None,
+                                                                                                             None),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_object_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args({}, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_object_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, {}),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_object(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args({}, {}),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_true_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(True, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_true_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, True),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_true(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(True,
+                                                                                                             True),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_false_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(False, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_false_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, False),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_false(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(False,
+                                                                                                             False),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_string_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args('abc', 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_string_number_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args('2', 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_string_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(2, 'abc'),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_string_number_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(2, '3'),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_string(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args('b2',
+                                                                                                             '3a'),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_float_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(2.31, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_float_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, 1.67),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(3.12,
+                                                                                                             4.33),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_int_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(-3, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_int_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, -8),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_int(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(-2, -5),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_float_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(-2.31, 1),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_float_subject_id(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(1, -1.67),
+            raises(Exception))
+
+    def test_average_of_subject_in_student_negative_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(-3.12,
+                                                                                                             -4.33),
+            raises(Exception))
