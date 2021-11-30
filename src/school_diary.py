@@ -102,3 +102,7 @@ class SchoolDiary:
         if check_id(id, self):
             if check_subject_id(id, subject_id, self):
                 return self.students[id - 1].average_of_subject(subject_id)
+
+    def average_of_student(self, id):
+        if check_id(id, self):
+            return self.students[id - 1].average_of_student()
