@@ -97,3 +97,8 @@ class SchoolDiary:
             if check_subject_id(id, subject_id, self):
                 if check_grade_id(id, subject_id, grade_id, self):
                     return self.students[id - 1].delete_grade(subject_id, grade_id)
+
+    def average_of_subject_in_student(self, id, subject_id):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                return self.students[id - 1].average_of_subject(subject_id)
