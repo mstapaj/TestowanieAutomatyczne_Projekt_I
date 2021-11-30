@@ -79,3 +79,8 @@ class SchoolDiary:
             if check_subject_id(id, subject_id, self):
                 if check_grade(grade):
                     return self.students[id - 1].add_grade(subject_id, grade)
+
+    def get_grades_in_student_from_subject(self, id, subject_id):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                return self.students[id - 1].get_grades(subject_id)
