@@ -750,3 +750,174 @@ class test_school_diary(unittest.TestCase):
     def test_delete_subject_in_student_negative_float(self):
         assert_that(calling(self.temp_with_student_with_subject.delete_subject_in_student).with_args(-3.12, -4.33),
                     raises(Exception))
+
+    # Testy add_grade_in_student_in_subject
+    def test_add_grade_in_student_in_subject(self):
+        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 1, 4), equal_to({
+            'Matematyka': [4],
+            'Polski': []
+        }))
+
+    def test_add_grade_in_student_in_subject_2(self):
+        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 1), equal_to({
+            'Matematyka': [],
+            'Polski': [1]
+        }))
+
+    def test_add_grade_in_student_in_subject_3(self):
+        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 1), equal_to({
+            'Matematyka': [],
+            'Polski': [1]
+        }))
+        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 4), equal_to({
+            'Matematyka': [],
+            'Polski': [1, 4]
+        }))
+        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 1, 6), equal_to({
+            'Matematyka': [6],
+            'Polski': [1, 4]
+        }))
+
+    def test_add_grade_in_student_in_subject_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(0, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(6, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_id_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 0, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 4, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_out_of_range(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, -2),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_out_of_range_2(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, 8),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(None, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args({}, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args([], 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(True, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(False, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args('abc', 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args('3', 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(2.31, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(-3, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_subject_id_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(-2.16, 1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, None, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, {}, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, [], 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, True, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, False, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 'abc', 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, '3', 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 2.31, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, -1, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_id_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, -2.16, 4),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_none(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, None),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_object(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, {}),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_array(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, []),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_true(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, True),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_false(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, False),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_string(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, 'abc'),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_string_number(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, '3'),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, 2.31),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_negative_int(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, -1),
+                    raises(Exception))
+
+    def test_add_grade_in_student_in_subject_grade_negative_float(self):
+        assert_that(calling(self.temp_with_student_with_subject.add_grade_in_student_in_subject).with_args(1, 1, -2.16),
+                    raises(Exception))
