@@ -67,3 +67,8 @@ class SchoolDiary:
             if check_subject_id(id, subject_id, self):
                 if check_subject_name(name):
                     return self.students[id - 1].edit_subject(subject_id, name)
+
+    def delete_subject_in_student(self, id, subject_id):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                return self.students[id - 1].delete_subject(subject_id)
