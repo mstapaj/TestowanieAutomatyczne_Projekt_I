@@ -1433,3 +1433,238 @@ class test_school_diary(unittest.TestCase):
             calling(self.temp_with_student_with_subject_with_grades.edit_grade_in_student_in_subject).with_args(1, 1, 1,
                                                                                                                 -3.76),
             raises(Exception))
+
+    # Testy delete_grade_in_student_in_subject
+    def test_delete_grade_in_student_in_subject(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject(1, 1, 1),
+                    equal_to([5]))
+
+    def test_delete_grade_in_student_in_subject_2(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject(1, 2, 1),
+                    equal_to([]))
+
+    def test_delete_grade_in_student_in_subject_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(0, 1,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(4, 1,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 0,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 6,
+                                                                                                                  1),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  0),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  9),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_none(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(None,
+                                                                                                                  1, 4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_object(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args({}, 1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_array(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args([], 1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_true(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(True,
+                                                                                                                  1, 4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_false(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(False,
+                                                                                                                  1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_string(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args('abc',
+                                                                                                                  1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_string_number(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args('3',
+                                                                                                                  1, 4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(2.31,
+                                                                                                                  1, 4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_negative_int(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(-3, 1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_id_negative_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(-2.16,
+                                                                                                                  1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_none(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  None,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_object(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, {},
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_array(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, [],
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_true(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  True,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_false(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  False,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_string(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  'abc',
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_string_number(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  '3',
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  2.31,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_negative_int(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, -1,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_subject_id_negative_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1,
+                                                                                                                  -2.16,
+                                                                                                                  4),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_none(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  None),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_object(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  {}),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_array(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  []),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_true(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  True),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_false(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  False),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_string(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  'abc'),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_string_number(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  '3'),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  2.31),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_negative_int(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  -1),
+            raises(Exception))
+
+    def test_delete_grade_in_student_in_subject_grade_id_negative_float(self):
+        assert_that(
+            calling(self.temp_with_student_with_subject_with_grades.delete_grade_in_student_in_subject).with_args(1, 1,
+                                                                                                                  -2.16),
+            raises(Exception))
