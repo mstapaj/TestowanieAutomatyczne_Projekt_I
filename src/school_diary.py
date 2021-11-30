@@ -84,3 +84,10 @@ class SchoolDiary:
         if check_id(id, self):
             if check_subject_id(id, subject_id, self):
                 return self.students[id - 1].get_grades(subject_id)
+
+    def edit_grade_in_student_in_subject(self, id, subject_id, grade_id, grade):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                if check_grade_id(id, subject_id, grade_id, self):
+                    if check_grade(grade):
+                        return self.students[id - 1].edit_grade(subject_id, grade_id, grade)
