@@ -91,3 +91,9 @@ class SchoolDiary:
                 if check_grade_id(id, subject_id, grade_id, self):
                     if check_grade(grade):
                         return self.students[id - 1].edit_grade(subject_id, grade_id, grade)
+
+    def delete_grade_in_student_in_subject(self, id, subject_id, grade_id):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                if check_grade_id(id, subject_id, grade_id, self):
+                    return self.students[id - 1].delete_grade(subject_id, grade_id)
