@@ -1,5 +1,6 @@
 from src.student import Student
 from src.checks.checks_school_diary import *
+from src.checks.checks_school_subject import check_grade, check_subject_name
 
 
 class SchoolDiary:
@@ -72,3 +73,9 @@ class SchoolDiary:
         if check_id(id, self):
             if check_subject_id(id, subject_id, self):
                 return self.students[id - 1].delete_subject(subject_id)
+
+    def add_grade_in_student_in_subject(self, id, subject_id, grade):
+        if check_id(id, self):
+            if check_subject_id(id, subject_id, self):
+                if check_grade(grade):
+                    return self.students[id - 1].add_grade(subject_id, grade)
