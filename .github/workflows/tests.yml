@@ -6,6 +6,8 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.9.6
+    environment:
+        CODECOV_TOKEN='c02b259f-e049-4aaa-b388-23bf50bcff62'
     steps:
       - checkout
       - run:
