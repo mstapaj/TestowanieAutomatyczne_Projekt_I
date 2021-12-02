@@ -1,6 +1,8 @@
 from src.student import Student
-from src.checks.checks_school_diary import *
+from src.checks.checks_school_diary import check_firstname, check_lastname, check_age, check_id, check_grade_id, \
+    check_subject_id
 from src.checks.checks_school_subject import check_grade, check_subject_name
+from src.student import check_remark_text
 
 
 class SchoolDiary:
@@ -106,3 +108,8 @@ class SchoolDiary:
     def average_of_student(self, id):
         if check_id(id, self):
             return self.students[id - 1].average_of_student()
+
+    def add_remark_to_student(self, id, text):
+        if check_id(id, self):
+            if check_remark_text(text):
+                return self.students[id - 1].add_remark(text)
