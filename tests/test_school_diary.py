@@ -1981,6 +1981,58 @@ class test_school_diary(unittest.TestCase):
     def test_add_remark_to_student_id_out_of_range_2(self):
         assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(5, 'Uwaga'), raises(Exception))
 
+    # Testy get_remarks_from_student
+    def test_get_remarks_from_student(self):
+        assert_that(self.temp_with_students_with_remarks.get_remarks_from_student(1), equal_to(['Uwaga 1', 'Uwaga 2']))
+
+    def test_get_remarks_from_student_out_of_range(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(0),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(3),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_none(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(None),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_object(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args({}),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_array(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args([]),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_true(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(True),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_false(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(False),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_string(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args('abc'),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_string_number(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args('2'),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(2.15),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_negative_int(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(-3),
+                    raises(Exception))
+
+    def test_get_remarks_from_student_negative_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(-3.45),
+                    raises(Exception))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_students = None
