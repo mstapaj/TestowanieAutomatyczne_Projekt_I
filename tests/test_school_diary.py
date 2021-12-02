@@ -1877,6 +1877,110 @@ class test_school_diary(unittest.TestCase):
         assert_that(calling(self.temp_with_student_with_subject_with_grades.average_of_student).with_args(-3.45),
                     raises(Exception))
 
+    # Testy add_remark_to_student
+    def test_add_remark_to_student(self):
+        assert_that(self.temp_with_students.add_remark_to_student(1, 'Uwaga 1'), equal_to(['Uwaga 1']))
+
+    def test_add_remark_to_student_2(self):
+        self.temp_with_students.add_remark_to_student(2, 'Uwaga 1')
+        assert_that(self.temp_with_students.add_remark_to_student(2, 'Uwaga 2'), equal_to(['Uwaga 1', 'Uwaga 2']))
+
+    def test_add_remark_to_student_none_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(None, 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_none_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, None), raises(Exception))
+
+    def test_add_remark_to_student_none(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(None, None), raises(Exception))
+
+    def test_add_remark_to_student_object_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args({}, 'Uwaga'), raises(Exception))
+
+    def test_add_remark_to_student_object_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, {}), raises(Exception))
+
+    def test_add_remark_to_student_object(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args({}, {}), raises(Exception))
+
+    def test_add_remark_to_student_array_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args([], 'Uwaga'), raises(Exception))
+
+    def test_add_remark_to_student_array_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, []), raises(Exception))
+
+    def test_add_remark_to_student_array(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args([], []), raises(Exception))
+
+    def test_add_remark_to_student_true_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(True, 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_true_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, True), raises(Exception))
+
+    def test_add_remark_to_student_true(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(True, True), raises(Exception))
+
+    def test_add_remark_to_student_false_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(False, 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_false_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, False), raises(Exception))
+
+    def test_add_remark_to_student_false(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(False, False), raises(Exception))
+
+    def test_add_remark_to_student_string_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args('abc', 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_string_number_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args('3', 'Uwaga'), raises(Exception))
+
+    def test_add_remark_to_student_int_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, 2), raises(Exception))
+
+    def test_add_remark_to_student_string_student_id_int_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args('32a', 5), raises(Exception))
+
+    def test_add_remark_to_student_float_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(2.15, 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_float_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, 3.87), raises(Exception))
+
+    def test_add_remark_to_student_float(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1.32, 4.12), raises(Exception))
+
+    def test_add_remark_to_student_negative_int_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(-3, 'Uwaga'), raises(Exception))
+
+    def test_add_remark_to_student_negative_int_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, -1), raises(Exception))
+
+    def test_add_remark_to_student_negative_int(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(-2, -9), raises(Exception))
+
+    def test_add_remark_to_student_negative_float_student_id(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(-3.12, 'Uwaga'),
+                    raises(Exception))
+
+    def test_add_remark_to_student_negative_float_text(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(1, -1.55), raises(Exception))
+
+    def test_add_remark_to_student_negative_float(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(-2.12, -9.65), raises(Exception))
+
+    def test_add_remark_to_student_id_out_of_range(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(0, 'Uwaga'), raises(Exception))
+
+    def test_add_remark_to_student_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students.add_remark_to_student).with_args(5, 'Uwaga'), raises(Exception))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_students = None
