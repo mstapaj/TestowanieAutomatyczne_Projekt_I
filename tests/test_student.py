@@ -15,6 +15,9 @@ class test_Student(unittest.TestCase):
         self.temp_with_grades.add_grade(1, 2)
         self.temp_with_grades.add_grade(1, 5)
         self.temp_with_grades.add_grade(2, 2)
+        self.temp_with_remarks = Student('Paweł', 'Pawłowski', 15)
+        self.temp_with_remarks.add_remark('Uwaga 1')
+        self.temp_with_remarks.add_remark('Uwaga 2')
 
     # Testy get_details
     def test_get_details(self):
@@ -811,8 +814,12 @@ class test_Student(unittest.TestCase):
     def test_add_remark_negative_float(self):
         assert_that(calling(self.temp.add_remark).with_args(-8.123), raises(Exception))
 
+    # Testy get_remarks
+    def test_get_remarks(self):
+        assert_that(self.temp_with_remarks.get_remarks(), equal_to(['Uwaga 1', 'Uwaga 2']))
 
     def tearDown(self):
         self.temp = None
         self.temp_with_subjects = None
         self.temp_with_grades = None
+        self.temp_with_remarks = None
