@@ -1,28 +1,23 @@
-version: 2.1
-orbs:
-  codecov: codecov/codecov@3.0.0
 
+name: CI
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 jobs:
   build:
-    docker:
-      - image: cimg/python:3.9.6
-    environment:
-        CODECOV_TOKEN='c02b259f-e049-4aaa-b388-23bf50bcff62'
+    runs-on: ubuntu-latest
     steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: pip install assertpy PyHamcrest nose2
-      - run:
-          name: Run tests and collect coverage
-          command: |
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install assertpy PyHamcrest nose2 coverage
+      - name: Run tests
+        run: |
             nose2 --with-coverage
-            coverage xml
-      - codecov/upload
-
-workflow:
-  version: 2.1
-  build-test:
-    jobs:
-      - build
-            
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+            fail_ci_if_error: true
+            token: ${{ secrets.CODECOV_TOKEN }}
