@@ -136,3 +136,8 @@ class Student:
             if check_remark_text(text):
                 self.remarks[remark_id - 1] = text
                 return self.remarks
+
+    def delete_remark(self, remark_id):
+        if check_remark_id(remark_id, self):
+            self.remarks.pop(remark_id - 1)
+            return self.remarks
