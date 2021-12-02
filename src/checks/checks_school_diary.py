@@ -22,9 +22,9 @@ def check_age(age):
         raise Exception('Błedny typ danych w wieku')
 
 
-def check_id(id, object):
-    if isinstance(id, int) and str(id) != 'True' and str(id) != 'False':
-        if 0 < id < len(object.students) + 1:
+def check_student_id(student_id, object):
+    if isinstance(student_id, int) and str(student_id) != 'True' and str(student_id) != 'False':
+        if 0 < student_id < len(object.students) + 1:
             return True
         else:
             raise Exception('Brak ucznia o takim Id')
@@ -32,9 +32,9 @@ def check_id(id, object):
         raise Exception('Id ucznia nie jest typu int')
 
 
-def check_subject_id(id, subject_id, object):
+def check_subject_id(student_id, subject_id, object):
     if isinstance(subject_id, int) and str(subject_id) != 'True' and str(subject_id) != 'False':
-        number_of_subjects = len(object.students[id - 1].get_subjects())
+        number_of_subjects = len(object.students[student_id - 1].get_subjects())
         if 0 < subject_id < number_of_subjects + 1:
             return True
         else:
@@ -43,9 +43,9 @@ def check_subject_id(id, subject_id, object):
         raise Exception('Id przedmiotu nie jest typu int')
 
 
-def check_grade_id(id, subject_id, grade_id, object):
+def check_grade_id(student_id, subject_id, grade_id, object):
     if isinstance(grade_id, int) and str(grade_id) != 'True' and str(grade_id) != 'False':
-        number_of_grades = len(object.students[id - 1].get_grades(subject_id))
+        number_of_grades = len(object.students[student_id - 1].get_grades(subject_id))
         if 0 < grade_id < number_of_grades + 1:
             return True
         else:
@@ -54,9 +54,9 @@ def check_grade_id(id, subject_id, grade_id, object):
         raise Exception('Id oceny nie jest typu int')
 
 
-def check_remark_id(id, remark_id, object):
+def check_remark_id(student_id, remark_id, object):
     if isinstance(remark_id, int) and str(remark_id) != 'True' and str(remark_id) != 'False':
-        number_of_remarks = len(object.students[id - 1].get_remarks())
+        number_of_remarks = len(object.students[student_id - 1].get_remarks())
         if 0 < remark_id < number_of_remarks + 1:
             return True
         else:
