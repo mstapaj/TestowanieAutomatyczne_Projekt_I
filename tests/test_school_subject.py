@@ -75,10 +75,7 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_add_grade_5_3(self):
-        assert_that(self.temp.add_grade(5)).is_equal_to({
-            'name': 'Polski',
-            'grades': [5]
-        })
+        self.temp.add_grade(5)
         assert_that(self.temp.add_grade(3)).is_equal_to({
             'name': 'Polski',
             'grades': [5, 3]
@@ -246,10 +243,7 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_delete_grade_3(self):
-        assert_that(self.temp_with_grades.delete_grade(2)).is_equal_to({
-            'name': 'Matematyka',
-            'grades': [3]
-        })
+        self.temp_with_grades.delete_grade(2)
         assert_that(self.temp_with_grades.delete_grade(1)).is_equal_to({
             'name': 'Matematyka',
             'grades': []

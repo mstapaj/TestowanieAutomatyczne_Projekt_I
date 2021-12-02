@@ -162,12 +162,7 @@ class test_Student(unittest.TestCase):
         }))
 
     def test_add_subject_2(self):
-        assert_that(self.temp.add_subject('Matematyka'), equal_to({
-            'firstname': 'Jan',
-            'lastname': 'Kowalski',
-            'age': 12,
-            'subjects': ['Matematyka']
-        }))
+        self.temp.add_subject('Matematyka')
         assert_that(self.temp.add_subject('Polski'), equal_to({
             'firstname': 'Jan',
             'lastname': 'Kowalski',
@@ -311,7 +306,7 @@ class test_Student(unittest.TestCase):
         assert_that(self.temp_with_subjects.delete_subject(2), equal_to(['Matematyka']))
 
     def test_delete_subject_3(self):
-        assert_that(self.temp_with_subjects.delete_subject(2), equal_to(['Matematyka']))
+        self.temp_with_subjects.delete_subject(2)
         assert_that(self.temp_with_subjects.delete_subject(1), equal_to([]))
 
     def test_delete_subject_out_of_range(self):
@@ -365,20 +360,14 @@ class test_Student(unittest.TestCase):
         }))
 
     def test_add_grade_3(self):
-        assert_that(self.temp_with_subjects.add_grade(2, 3), equal_to({
-            'Matematyka': [],
-            'Polski': [3]
-        }))
+        self.temp_with_subjects.add_grade(2, 3)
         assert_that(self.temp_with_subjects.add_grade(1, 5), equal_to({
             'Matematyka': [5],
             'Polski': [3]
         }))
 
     def test_add_grade_4(self):
-        assert_that(self.temp_with_subjects.add_grade(2, 3), equal_to({
-            'Matematyka': [],
-            'Polski': [3]
-        }))
+        self.temp_with_subjects.add_grade(2, 3)
         assert_that(self.temp_with_subjects.add_grade(2, 5), equal_to({
             'Matematyka': [],
             'Polski': [3, 5]

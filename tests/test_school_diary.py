@@ -39,9 +39,7 @@ class test_school_diary(unittest.TestCase):
         ]))
 
     def test_add_student_3(self):
-        assert_that(self.temp.add_student('Ola', 'Kot', 17), equal_to([
-            {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17}
-        ]))
+        self.temp.add_student('Ola', 'Kot', 17)
         assert_that(self.temp.add_student('Jan', 'Kowalski', 12), equal_to([
             {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17},
             {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}
@@ -277,9 +275,7 @@ class test_school_diary(unittest.TestCase):
         ]))
 
     def test_delete_student_3(self):
-        assert_that(self.temp_with_students.delete_student(2), equal_to([
-            {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}
-        ]))
+        self.temp_with_students.delete_student(2)
         assert_that(self.temp_with_students.delete_student(1), equal_to([]))
 
     def test_delete_student_out_of_range(self):
@@ -328,12 +324,7 @@ class test_school_diary(unittest.TestCase):
         }))
 
     def test_add_subject_to_student_2(self):
-        assert_that(self.temp_with_students.add_subject_to_student(1, 'Matematyka'), equal_to({
-            'firstname': 'Jan',
-            'lastname': 'Kowalski',
-            'age': 12,
-            'subjects': ['Matematyka']
-        }))
+        self.temp_with_students.add_subject_to_student(1, 'Matematyka')
         assert_that(self.temp_with_students.add_subject_to_student(1, 'Polski'), equal_to({
             'firstname': 'Jan',
             'lastname': 'Kowalski',
@@ -639,7 +630,7 @@ class test_school_diary(unittest.TestCase):
         assert_that(self.temp_with_student_with_subject.delete_subject_in_student(1, 2), equal_to(['Matematyka']))
 
     def test_delete_subject_in_student_3(self):
-        assert_that(self.temp_with_student_with_subject.delete_subject_in_student(1, 2), equal_to(['Matematyka']))
+        self.temp_with_student_with_subject.delete_subject_in_student(1, 2)
         assert_that(self.temp_with_student_with_subject.delete_subject_in_student(1, 1), equal_to([]))
 
     def test_delete_subject_in_student_subject_id_out_of_range(self):
@@ -776,14 +767,8 @@ class test_school_diary(unittest.TestCase):
         }))
 
     def test_add_grade_in_student_in_subject_3(self):
-        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 1), equal_to({
-            'Matematyka': [],
-            'Polski': [1]
-        }))
-        assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 4), equal_to({
-            'Matematyka': [],
-            'Polski': [1, 4]
-        }))
+        self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 1)
+        self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 2, 4)
         assert_that(self.temp_with_student_with_subject.add_grade_in_student_in_subject(1, 1, 6), equal_to({
             'Matematyka': [6],
             'Polski': [1, 4]
