@@ -1,35 +1,26 @@
-
-name: CI
 version: 2.1
 orbs:
   codecov: codecov/codecov@3.0.0
-on:
-  push:
-    branches: [ main ]
-    
-  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    docker:
+      - image: cimg/python:3.9.6
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install assertpy PyHamcrest nose2
-      - name: Run tests
-        run: |
+      - checkout
+      - run:
+          name: Install dependencies
+          command: pip install assertpy PyHamcrest nose2
+      - run:
+          name: Run tests and collect coverage
+          command: |
             nose2 --with-coverage
             coverage xml
-      - codecov/upload      
-            
+      - codecov/upload
+
 workflow:
   version: 2.1
   build-test:
     jobs:
       - build
-
-
-
-
             
