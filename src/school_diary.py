@@ -123,3 +123,8 @@ class SchoolDiary:
             if check_remark_id(id, remark_id, self):
                 if check_remark_text(text):
                     return self.students[id - 1].edit_remark(remark_id, text)
+
+    def delete_remark_in_student(self, id, remark_id):
+        if check_id(id, self):
+            if check_remark_id(id, remark_id, self):
+                return self.students[id - 1].delete_remark(remark_id)
