@@ -18,6 +18,8 @@ jobs:
             nose2 --with-coverage
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
+        env:
+            CODECOV_TOKEN='c02b259f-e049-4aaa-b388-23bf50bcff62'
         with:
             fail_ci_if_error: true
             token: ${{ secrets.CODECOV_TOKEN }}
