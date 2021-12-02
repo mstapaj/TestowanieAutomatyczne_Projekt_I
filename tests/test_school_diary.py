@@ -2037,8 +2037,174 @@ class test_school_diary(unittest.TestCase):
         assert_that(calling(self.temp_with_students_with_remarks.get_remarks_from_student).with_args(-3.45),
                     raises(Exception))
 
+    # Testy edit_remark_in_student
+    def test_edit_remark_in_student(self):
+        assert_that(self.temp_with_students_with_remarks.edit_remark_in_student(1, 1, 'Uwaga 1 po edycji'),
+                    equal_to(['Uwaga 1 po edycji', 'Uwaga 2']))
+
+    def test_edit_remark_in_student_2(self):
+        assert_that(self.temp_with_students_with_remarks.edit_remark_in_student(1, 2, 'Uwaga 2 po edycji'),
+                    equal_to(['Uwaga 1', 'Uwaga 2 po edycji']))
+
+    def test_edit_remark_in_student_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(0, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(4, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_out_of_range(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 0, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_out_of_range_2(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 6, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_none(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(None, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_object(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args({}, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_array(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args([], 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_true(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(True, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_false(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(False, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_string(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args('abc', 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_string_number(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args('2', 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_float(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(2.14, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_negative_int(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(-3, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_id_negative_float(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(-2.51, 1, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_none(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, None, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_object(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, {}, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_array(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, [], 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_true(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, True, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_false(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, False, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_string(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 'abc', 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_string_number(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, '3', 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_float(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 2.14, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_negative_int(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, -3, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_remark_id_negative_float(self):
+        assert_that(
+            calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, -2.51, 'Uwaga po edycji'),
+            raises(Exception))
+
+    def test_edit_remark_in_student_text_none(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, None),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_object(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, {}),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_array(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, []),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_true(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, True),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_false(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, False),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_int(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, 3),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, 3.14),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_negative_int(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, -4),
+                    raises(Exception))
+
+    def test_edit_remark_in_student_text_negative_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, -4.11),
+                    raises(Exception))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_students = None
         self.temp_with_student_with_subject = None
         self.temp_with_student_with_subject_with_grades = None
+        self.temp_with_students_with_remarks = None
