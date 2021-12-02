@@ -917,6 +917,50 @@ class test_Student(unittest.TestCase):
     def test_edit_remark_id_out_of_range_2(self):
         assert_that(calling(self.temp_with_remarks.edit_remark).with_args(5, 'Uwaga po edycji'), raises(Exception))
 
+    # Testy delete_remark
+    def test_delete_remark(self):
+        assert_that(self.temp_with_remarks.delete_remark(1), equal_to(['Uwaga 2']))
+
+    def test_delete_remark_2(self):
+        self.temp_with_remarks.delete_remark(2)
+        assert_that(self.temp_with_remarks.delete_remark(1), equal_to([]))
+
+    def test_delete_remark_out_of_range(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(0), raises(Exception))
+
+    def test_delete_remark_out_of_range_2(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(3), raises(Exception))
+
+    def test_delete_remark_none(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(None), raises(Exception))
+
+    def test_delete_remark_object(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args({}), raises(Exception))
+
+    def test_delete_remark_array(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args([]), raises(Exception))
+
+    def test_delete_remark_true(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(True), raises(Exception))
+
+    def test_delete_remark_false(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(False), raises(Exception))
+
+    def test_delete_remark_string(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args('abc'), raises(Exception))
+
+    def test_delete_remark_string_number(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args('2'), raises(Exception))
+
+    def test_delete_remark_float(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(2.15), raises(Exception))
+
+    def test_delete_remark_negative_int(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(-3), raises(Exception))
+
+    def test_delete_remark_negative_float(self):
+        assert_that(calling(self.temp_with_remarks.delete_remark).with_args(-3.45), raises(Exception))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_subjects = None
