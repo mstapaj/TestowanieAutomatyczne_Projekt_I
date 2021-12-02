@@ -2202,6 +2202,134 @@ class test_school_diary(unittest.TestCase):
         assert_that(calling(self.temp_with_students_with_remarks.edit_remark_in_student).with_args(1, 1, -4.11),
                     raises(Exception))
 
+    # Testy delete_remark_in_student
+    def test_delete_remark_in_student(self):
+        assert_that(self.temp_with_students_with_remarks.delete_remark_in_student(1, 1), equal_to(['Uwaga 2']))
+
+    def test_delete_remark_in_student_2(self):
+        self.temp_with_students_with_remarks.delete_remark_in_student(1, 2)
+        assert_that(self.temp_with_students_with_remarks.delete_remark_in_student(1, 1), equal_to([]))
+
+    def test_delete_remark_in_student_remark_id_out_of_range(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(0, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_remark_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(6, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_id_out_of_range(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, 0),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_id_out_of_range_2(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, 4),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_none_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(None, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_none_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, None),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_none(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(None, None),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_object_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args({}, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_object_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, {}),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_object(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args({}, {}),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_true_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(True, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_true_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, True),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_true(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(True, True),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_false_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(False, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_false_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, False),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_false(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(False, False),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_string_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args('abc', 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_string_number_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args('2', 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_string_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(2, 'abc'),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_string_number_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(2, '3'),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_string(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args('b2', '3a'),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_float_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(2.31, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_float_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, 1.67),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(3.12, 4.33),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_int_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(-3, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_int_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, -8),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_int(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(-2, -5),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_float_remark_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(-2.31, 1),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_float_grade_id(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(1, -1.67),
+                    raises(Exception))
+
+    def test_delete_remark_in_student_negative_float(self):
+        assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(-3.12, -4.33),
+                    raises(Exception))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_students = None
