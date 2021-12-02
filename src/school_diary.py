@@ -1,6 +1,6 @@
 from src.student import Student
-from src.checks.checks_school_diary import check_firstname, check_lastname, check_age, check_student_id, check_grade_id, \
-    check_subject_id, check_remark_id
+from src.checks.checks_school_diary import check_firstname, check_lastname, check_age, check_student_id, \
+    check_subject_id, check_remark_id, check_grade_id
 from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.student import check_remark_text
 import csv
@@ -37,15 +37,15 @@ class SchoolDiary:
             }
             if isinstance(firstname, str):
                 temp['firstname'] = firstname
-            elif firstname != None:
+            elif firstname is not None:
                 raise Exception('Błedny typ danych w imieniu')
             if isinstance(lastname, str):
                 temp['lastname'] = lastname
-            elif lastname != None:
+            elif lastname is not None:
                 raise Exception('Błedny typ danych w nazwisku')
             if isinstance(age, int) and str(age) != 'True' and str(age) != 'False' and 0 < age:
                 temp['age'] = age
-            elif age != None:
+            elif age is not None:
                 raise Exception('Błedny typ danych w wieku')
             return self.students[student_id - 1].edit_student(temp['firstname'], temp['lastname'], temp['age'])
 
