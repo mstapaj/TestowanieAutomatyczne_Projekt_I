@@ -776,6 +776,42 @@ class test_Student(unittest.TestCase):
     def test_average_of_student_2(self):
         assert_that(self.temp_with_subjects.average_of_student(), equal_to(1.0))
 
+    # Testy add_remark
+    def test_add_remark(self):
+        assert_that(self.temp.add_remark('Uwaga'), equal_to(['Uwaga']))
+
+    def test_add_remark_2(self):
+        self.temp.add_remark('Uwaga 1')
+        assert_that(self.temp.add_remark('Uwaga 2'), equal_to(['Uwaga 1', 'Uwaga 2']))
+
+    def test_add_remark_none(self):
+        assert_that(calling(self.temp.add_remark).with_args(None), raises(Exception))
+
+    def test_add_remark_object(self):
+        assert_that(calling(self.temp.add_remark).with_args({}), raises(Exception))
+
+    def test_add_remark_array(self):
+        assert_that(calling(self.temp.add_remark).with_args([]), raises(Exception))
+
+    def test_add_remark_true(self):
+        assert_that(calling(self.temp.add_remark).with_args(True), raises(Exception))
+
+    def test_add_remark_false(self):
+        assert_that(calling(self.temp.add_remark).with_args(False), raises(Exception))
+
+    def test_add_remark_int(self):
+        assert_that(calling(self.temp.add_remark).with_args(12), raises(Exception))
+
+    def test_add_remark_float(self):
+        assert_that(calling(self.temp.add_remark).with_args(2.98), raises(Exception))
+
+    def test_add_remark_negative_int(self):
+        assert_that(calling(self.temp.add_remark).with_args(-9), raises(Exception))
+
+    def test_add_remark_negative_float(self):
+        assert_that(calling(self.temp.add_remark).with_args(-8.123), raises(Exception))
+
+
     def tearDown(self):
         self.temp = None
         self.temp_with_subjects = None
