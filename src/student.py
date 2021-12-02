@@ -1,5 +1,5 @@
-from src.checks.checks_student import check_subject_id, check_grade_id
-from src.checks.checks_school_subject import check_grade,check_subject_name
+from src.checks.checks_student import check_subject_id, check_grade_id,check_remark_text
+from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.school_subject import SchoolSubject
 
 
@@ -9,6 +9,7 @@ class Student:
         self.lastname = lastname
         self.age = age
         self.subjects = []
+        self.remarks=[]
 
     def get_details(self):
         return {
@@ -121,3 +122,8 @@ class Student:
             else:
                 raise Exception('Średnia nie jest z przedziału 0-6')
         return round(summary / len(self.subjects), 2)
+
+    def add_remark(self, text):
+        if check_remark_text(text):
+            self.remarks.append(text)
+            return self.remarks

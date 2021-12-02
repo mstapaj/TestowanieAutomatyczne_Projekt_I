@@ -17,3 +17,10 @@ def check_grade_id(subject_id, grade_id, object):
             raise Exception('Brak oceny o takim Id')
     else:
         raise Exception('Id oceny nie jest typu int')
+
+
+def check_remark_text(text):
+    if isinstance(text, str):
+        return True
+    else:
+        raise Exception('Treść uwagi nie jest typu string')
