@@ -16,9 +16,9 @@ jobs:
       - name: Run tests
         run: |
             nose2 --with-coverage
+            coverage xml
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
-
         with:
             fail_ci_if_error: true
-            token: 'c02b259f-e049-4aaa-b388-23bf50bcff62'
+            token: ${{ secrets.CODECOV_TOKEN }}
