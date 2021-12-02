@@ -1,6 +1,6 @@
 from src.student import Student
 from src.checks.checks_school_diary import check_firstname, check_lastname, check_age, check_id, check_grade_id, \
-    check_subject_id
+    check_subject_id, check_remark_id
 from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.student import check_remark_text
 
@@ -117,3 +117,9 @@ class SchoolDiary:
     def get_remarks_from_student(self, id):
         if check_id(id, self):
             return self.students[id - 1].get_remarks()
+
+    def edit_remark_in_student(self, id, remark_id, text):
+        if check_id(id, self):
+            if check_remark_id(id, remark_id, self):
+                if check_remark_text(text):
+                    return self.students[id - 1].edit_remark(remark_id, text)

@@ -52,3 +52,14 @@ def check_grade_id(id, subject_id, grade_id, object):
             raise Exception('Brak oceny o takim Id')
     else:
         raise Exception('Id oceny nie jest typu int')
+
+
+def check_remark_id(id, remark_id, object):
+    if isinstance(remark_id, int) and str(remark_id) != 'True' and str(remark_id) != 'False':
+        number_of_remarks = len(object.students[id - 1].get_remarks())
+        if 0 < remark_id < number_of_remarks + 1:
+            return True
+        else:
+            raise Exception('Brak uwagi o takim Id')
+    else:
+        raise Exception('Id uwagi nie jest typu int')
