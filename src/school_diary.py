@@ -5,6 +5,7 @@ from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.student import check_remark_text
 import csv
 
+
 class SchoolDiary:
 
     def __init__(self):
@@ -156,6 +157,23 @@ class SchoolDiary:
                 writer.writerow(i)
         return 'Wyeksportowano dane'
 
+    def import_data_from_csv(self):
+        a_csv_file = open("poExporcie.csv", "r")
+        dict_reader = csv.DictReader(a_csv_file)
+        dict_from_csv = []
+        for i in list(dict_reader):
+            dict_from_csv.append(dict(i))
+        for i in range(len(dict_from_csv)):
+            self.add_student(dict_from_csv[i]['Imie'], dict_from_csv[i]['Nazwisko'], int(dict_from_csv[i]['Wiek']))
+            for j in range(len(eval(dict_from_csv[i]['Przedmioty z ocenami']))):
+                self.add_subject_to_student(i + 1, eval(dict_from_csv[i]['Przedmioty z ocenami'])[j]['Przedmiot'])
+                for k in range(len(eval(dict_from_csv[i]['Przedmioty z ocenami'])[j]['Oceny'])):
+                    self.add_grade_in_student_in_subject(i + 1, j + 1,
+                                                         eval(dict_from_csv[i]['Przedmioty z ocenami'])[j]['Oceny'][k])
+            for l in range(len(eval(dict_from_csv[i]['Uwagi']))):
+                self.add_remark_to_student(i + 1, eval(dict_from_csv[i]['Uwagi'])[l])
+        return 'Zaimportowano dane'
+
 # Testy eksportowania danych
 # dziennik = SchoolDiary()
 # dziennik.add_student('Jan', 'Kowalski', 12)
@@ -174,3 +192,11 @@ class SchoolDiary:
 # dziennik.add_grade_in_student_in_subject(2, 1, 2)
 # dziennik.add_remark_to_student(2, 'Uwaga 1')
 # print(dziennik.export_data_to_csv())
+
+# Testy importowania danych
+# dziennik = SchoolDiary()
+# print(dziennik.import_data_from_csv())
+# print(dziennik.show_students())
+# print(dziennik.get_subjects_from_student(1))
+# print(dziennik.get_remarks_from_student(1))
+# print(dziennik.get_grades_in_student_from_subject(2, 1))
