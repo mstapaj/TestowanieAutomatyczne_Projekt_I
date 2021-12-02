@@ -15,9 +15,9 @@ def check_grade(grade):
         raise Exception('Ocena nie jest typu int')
 
 
-def check_grade_id(grade_id, object):
+def check_grade_id(grade_id, subject):
     if isinstance(grade_id, int) and str(grade_id) != "True" and str(grade_id) != "False":
-        if 0 < grade_id < len(object.grades) + 1:
+        if 0 < grade_id < len(subject.grades) + 1:
             return True
         else:
             raise Exception('Brak oceny o takim Id')
