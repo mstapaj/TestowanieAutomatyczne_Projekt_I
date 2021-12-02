@@ -113,3 +113,7 @@ class SchoolDiary:
         if check_id(id, self):
             if check_remark_text(text):
                 return self.students[id - 1].add_remark(text)
+
+    def get_remarks_from_student(self, id):
+        if check_id(id, self):
+            return self.students[id - 1].get_remarks()

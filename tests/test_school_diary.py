@@ -22,6 +22,10 @@ class test_school_diary(unittest.TestCase):
         self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 2)
         self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 5)
         self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 2, 2)
+        self.temp_with_students_with_remarks = SchoolDiary()
+        self.temp_with_students_with_remarks.add_student('Paweł', 'Pawłowski', 15)
+        self.temp_with_students_with_remarks.add_remark_to_student(1, 'Uwaga 1')
+        self.temp_with_students_with_remarks.add_remark_to_student(1, 'Uwaga 2')
 
     # Testy add_student
     def test_add_student(self):
