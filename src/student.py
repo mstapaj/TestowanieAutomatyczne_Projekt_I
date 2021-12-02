@@ -1,4 +1,4 @@
-from src.checks.checks_student import check_subject_id, check_grade_id, check_remark_text
+from src.checks.checks_student import check_subject_id, check_grade_id, check_remark_text, check_remark_id
 from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.school_subject import SchoolSubject
 
@@ -130,3 +130,9 @@ class Student:
 
     def get_remarks(self):
         return self.remarks
+
+    def edit_remark(self, remark_id, text):
+        if check_remark_id(remark_id, self):
+            if check_remark_text(text):
+                self.remarks[remark_id - 1] = text
+                return self.remarks

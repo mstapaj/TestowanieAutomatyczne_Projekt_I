@@ -24,3 +24,13 @@ def check_remark_text(text):
         return True
     else:
         raise Exception('Treść uwagi nie jest typu string')
+
+
+def check_remark_id(remark_id, object):
+    if isinstance(remark_id, int) and str(remark_id) != "True" and str(remark_id) != "False":
+        if 0 < remark_id < len(object.remarks) + 1:
+            return True
+        else:
+            raise Exception('Brak uwagi o takim Id')
+    else:
+        raise Exception('Id uwagi nie jest typu int')
