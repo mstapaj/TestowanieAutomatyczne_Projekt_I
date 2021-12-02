@@ -1,0 +1,3 @@
+Imie,Nazwisko,Wiek,Przedmioty z ocenami,Średnia ucznia,Uwagi
+Jan,Kowalski,12,"[{'Przedmiot': 'Matematyka', 'Oceny': [1, 3, 5]}, {'Przedmiot': 'Polski', 'Oceny': [4, 2]}]",3.0,"['Uwaga 1', 'Uwaga 2']"
+Ola,Kot,8,"[{'Przedmiot': 'Matematyka', 'Oceny': [2, 2]}]",2.0,['Uwaga 1']

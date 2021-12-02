@@ -3,7 +3,7 @@ from src.checks.checks_school_diary import check_firstname, check_lastname, chec
     check_subject_id, check_remark_id
 from src.checks.checks_school_subject import check_grade, check_subject_name
 from src.student import check_remark_text
-
+import csv
 
 class SchoolDiary:
 
@@ -128,3 +128,49 @@ class SchoolDiary:
         if check_id(id, self):
             if check_remark_id(id, remark_id, self):
                 return self.students[id - 1].delete_remark(remark_id)
+
+    def export_data_to_csv(self):
+        data = []
+        for i in range(len(self.show_students())):
+            data.append({
+                'Imie': self.show_students()[i]['firstname'],
+                'Nazwisko': self.show_students()[i]['lastname'],
+                'Wiek': self.show_students()[i]['age']
+            })
+            subjects_with_grades = []
+            subjects = self.get_subjects_from_student(i + 1)
+            for j in range(len(subjects)):
+                grades = self.get_grades_in_student_from_subject(i + 1, j + 1)
+                subjects_with_grades.append({
+                    'Przedmiot': subjects[j],
+                    'Oceny': grades
+                })
+            data[i]['Przedmioty z ocenami'] = subjects_with_grades
+            data[i]['Średnia ucznia'] = self.average_of_student(i + 1)
+            data[i]['Uwagi'] = self.get_remarks_from_student(i + 1)
+        with open('poExporcie.csv', mode='w') as file:
+            fieldnames = ['Imie', 'Nazwisko', 'Wiek', 'Przedmioty z ocenami', 'Średnia ucznia', 'Uwagi']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for i in data:
+                writer.writerow(i)
+        return 'Wyeksportowano dane'
+
+# Testy eksportowania danych
+# dziennik = SchoolDiary()
+# dziennik.add_student('Jan', 'Kowalski', 12)
+# dziennik.add_subject_to_student(1, 'Matematyka')
+# dziennik.add_subject_to_student(1, 'Polski')
+# dziennik.add_grade_in_student_in_subject(1, 1, 1)
+# dziennik.add_grade_in_student_in_subject(1, 1, 3)
+# dziennik.add_grade_in_student_in_subject(1, 1, 5)
+# dziennik.add_grade_in_student_in_subject(1, 2, 4)
+# dziennik.add_grade_in_student_in_subject(1, 2, 2)
+# dziennik.add_remark_to_student(1, 'Uwaga 1')
+# dziennik.add_remark_to_student(1, 'Uwaga 2')
+# dziennik.add_student('Ola', 'Kot', 8)
+# dziennik.add_subject_to_student(2, 'Matematyka')
+# dziennik.add_grade_in_student_in_subject(2, 1, 2)
+# dziennik.add_grade_in_student_in_subject(2, 1, 2)
+# dziennik.add_remark_to_student(2, 'Uwaga 1')
+# print(dziennik.export_data_to_csv())

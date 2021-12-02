@@ -121,7 +121,10 @@ class Student:
                 summary += 6
             else:
                 raise Exception('Średnia nie jest z przedziału 0-6')
-        return round(summary / len(self.subjects), 2)
+        if len(self.subjects) == 0:
+            return 0
+        else:
+            return round(summary / len(self.subjects), 2)
 
     def add_remark(self, text):
         if check_remark_text(text):
