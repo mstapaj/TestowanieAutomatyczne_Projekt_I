@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-        CODECOV_TOKEN='c02b259f-e049-4aaa-b388-23bf50bcff62
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
@@ -23,4 +21,4 @@ jobs:
 
         with:
             fail_ci_if_error: true
-            token: ${{ secrets.CODECOV_TOKEN }}
+            token: 'c02b259f-e049-4aaa-b388-23bf50bcff62'
