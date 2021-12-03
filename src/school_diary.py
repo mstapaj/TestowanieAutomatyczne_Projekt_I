@@ -161,6 +161,21 @@ class SchoolDiary:
                     return self.students[student_id - 1].edit_subject(subject_id, name)
 
     def delete_subject_in_student(self, student_id, subject_id):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.add_subject_to_student(1,'Matematyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka']}
+        >>> c.add_subject_to_student(1,'Fizyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka', 'Fizyka']}
+        >>> c.delete_subject_in_student(1,1)
+        ['Fizyka']
+        >>> c.delete_subject_in_student(1,1)
+        []
+        """
         if check_student_id(student_id, self):
             if check_subject_id(student_id, subject_id, self):
                 return self.students[student_id - 1].delete_subject(subject_id)
