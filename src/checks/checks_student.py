@@ -3,9 +3,9 @@ def check_subject_id(subject_id, student):
         if 0 < subject_id < len(student.subjects) + 1:
             return True
         else:
-            raise Exception('Brak przedmiotu o takim Id')
+            raise ValueError('Brak przedmiotu o takim Id')
     else:
-        raise Exception('Id przedmiotu nie jest typu int')
+        raise TypeError('Id przedmiotu nie jest typu int')
 
 
 def check_grade_id(subject_id, grade_id, student):
@@ -14,16 +14,16 @@ def check_grade_id(subject_id, grade_id, student):
         if 0 < grade_id < number_of_grades + 1:
             return True
         else:
-            raise Exception('Brak oceny o takim Id')
+            raise ValueError('Brak oceny o takim Id')
     else:
-        raise Exception('Id oceny nie jest typu int')
+        raise TypeError('Id oceny nie jest typu int')
 
 
 def check_remark_text(text):
     if isinstance(text, str):
         return True
     else:
-        raise Exception('Treść uwagi nie jest typu string')
+        raise TypeError('Treść uwagi nie jest typu string')
 
 
 def check_remark_id(remark_id, student):
@@ -31,6 +31,6 @@ def check_remark_id(remark_id, student):
         if 0 < remark_id < len(student.remarks) + 1:
             return True
         else:
-            raise Exception('Brak uwagi o takim Id')
+            raise ValueError('Brak uwagi o takim Id')
     else:
-        raise Exception('Id uwagi nie jest typu int')
+        raise TypeError('Id uwagi nie jest typu int')

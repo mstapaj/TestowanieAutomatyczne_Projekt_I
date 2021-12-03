@@ -22,15 +22,15 @@ class Student:
         if isinstance(firstname, str):
             self.firstname = firstname
         elif firstname is not None:
-            raise Exception('Błedny typ danych w imieniu')
+            raise TypeError('Błedny typ danych w imieniu')
         if isinstance(lastname, str):
             self.lastname = lastname
         elif lastname is not None:
-            raise Exception('Błedny typ danych w nazwisku')
+            raise TypeError('Błedny typ danych w nazwisku')
         if isinstance(age, int) and str(age) != 'True' and str(age) != 'False' and 0 < age:
             self.age = age
         elif age is not None:
-            raise Exception('Błedny typ danych w wieku')
+            raise TypeError('Błedny typ danych w wieku')
         return {
             'firstname': self.firstname,
             'lastname': self.lastname,
@@ -120,7 +120,7 @@ class Student:
             elif 5.51 <= avg <= 6:
                 summary += 6
             else:
-                raise Exception('Średnia nie jest z przedziału 0-6')
+                raise ValueError('Średnia nie jest z przedziału 0-6')
         if len(self.subjects) == 0:
             return 0
         else:

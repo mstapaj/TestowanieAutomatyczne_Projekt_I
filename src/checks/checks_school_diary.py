@@ -2,14 +2,14 @@ def check_firstname(firstname):
     if isinstance(firstname, str):
         return True
     else:
-        raise Exception('Błedny typ danych w imieniu')
+        raise TypeError('Błedny typ danych w imieniu')
 
 
 def check_lastname(lastname):
     if isinstance(lastname, str):
         return True
     else:
-        raise Exception('Błedny typ danych w nazwisku')
+        raise TypeError('Błedny typ danych w nazwisku')
 
 
 def check_age(age):
@@ -17,9 +17,9 @@ def check_age(age):
         if 0 < age:
             return True
         else:
-            raise Exception('Wiek jest poniżej 0')
+            raise ValueError('Wiek jest poniżej 0')
     else:
-        raise Exception('Błedny typ danych w wieku')
+        raise TypeError('Błedny typ danych w wieku')
 
 
 def check_student_id(student_id, diary):
@@ -27,9 +27,9 @@ def check_student_id(student_id, diary):
         if 0 < student_id < len(diary.students) + 1:
             return True
         else:
-            raise Exception('Brak ucznia o takim Id')
+            raise ValueError('Brak ucznia o takim Id')
     else:
-        raise Exception('Id ucznia nie jest typu int')
+        raise TypeError('Id ucznia nie jest typu int')
 
 
 def check_subject_id(student_id, subject_id, diary):
@@ -38,9 +38,9 @@ def check_subject_id(student_id, subject_id, diary):
         if 0 < subject_id < number_of_subjects + 1:
             return True
         else:
-            raise Exception('Brak przedmiotu o takim Id')
+            raise ValueError('Brak przedmiotu o takim Id')
     else:
-        raise Exception('Id przedmiotu nie jest typu int')
+        raise TypeError('Id przedmiotu nie jest typu int')
 
 
 def check_grade_id(student_id, subject_id, grade_id, diary):
@@ -49,9 +49,9 @@ def check_grade_id(student_id, subject_id, grade_id, diary):
         if 0 < grade_id < number_of_grades + 1:
             return True
         else:
-            raise Exception('Brak oceny o takim Id')
+            raise ValueError('Brak oceny o takim Id')
     else:
-        raise Exception('Id oceny nie jest typu int')
+        raise TypeError('Id oceny nie jest typu int')
 
 
 def check_remark_id(student_id, remark_id, diary):
@@ -60,6 +60,6 @@ def check_remark_id(student_id, remark_id, diary):
         if 0 < remark_id < number_of_remarks + 1:
             return True
         else:
-            raise Exception('Brak uwagi o takim Id')
+            raise ValueError('Brak uwagi o takim Id')
     else:
-        raise Exception('Id uwagi nie jest typu int')
+        raise TypeError('Id uwagi nie jest typu int')

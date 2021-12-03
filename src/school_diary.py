@@ -38,15 +38,15 @@ class SchoolDiary:
             if isinstance(firstname, str):
                 temp['firstname'] = firstname
             elif firstname is not None:
-                raise Exception('Błedny typ danych w imieniu')
+                raise TypeError('Błedny typ danych w imieniu')
             if isinstance(lastname, str):
                 temp['lastname'] = lastname
             elif lastname is not None:
-                raise Exception('Błedny typ danych w nazwisku')
+                raise TypeError('Błedny typ danych w nazwisku')
             if isinstance(age, int) and str(age) != 'True' and str(age) != 'False' and 0 < age:
                 temp['age'] = age
             elif age is not None:
-                raise Exception('Błedny typ danych w wieku')
+                raise TypeError('Błedny typ danych w wieku')
             return self.students[student_id - 1].edit_student(temp['firstname'], temp['lastname'], temp['age'])
 
     def delete_student(self, student_id):

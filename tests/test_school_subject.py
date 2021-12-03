@@ -35,31 +35,31 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_edit_subject_int(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(25)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(25)
 
     def test_edit_subject_float(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(2.5)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(2.5)
 
     def test_edit_subject_negative_int(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(-10)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(-10)
 
     def test_edit_subject_negative_float(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(-3.2)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(-3.2)
 
     def test_edit_subject_object(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with({})
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with({})
 
     def test_edit_subject_array(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with([])
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with([])
 
     def test_edit_subject_none(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(None)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(None)
 
     def test_edit_subject_true(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(True)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(True)
 
     def test_edit_subject_false(self):
-        assert_that(self.temp.edit_subject).raises(Exception).when_called_with(False)
+        assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(False)
 
     # Testy add_grade
     def test_add_grade_2(self):
@@ -88,40 +88,40 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_add_grade_7(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(7)
+        assert_that(self.temp.add_grade).raises(ValueError).when_called_with(7)
 
     def test_add_grade_0(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(0)
+        assert_that(self.temp.add_grade).raises(ValueError).when_called_with(0)
 
     def test_add_grade_negative_int(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(-2)
+        assert_that(self.temp.add_grade).raises(ValueError).when_called_with(-2)
 
     def test_add_grade_negative_float(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(-3.1)
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with(-3.1)
 
     def test_add_grade_float(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(2.45)
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with(2.45)
 
     def test_add_grade_object(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with({})
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with({})
 
     def test_add_grade_array(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with([])
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with([])
 
     def test_add_grade_none(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(None)
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with(None)
 
     def test_add_grade_true(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(True)
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with(True)
 
     def test_add_grade_false(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with(False)
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with(False)
 
     def test_add_grade_string(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with('abc')
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with('abc')
 
     def test_add_grade_string_number(self):
-        assert_that(self.temp.add_grade).raises(Exception).when_called_with('5')
+        assert_that(self.temp.add_grade).raises(TypeError).when_called_with('5')
 
     # Testy edit_grade
     def test_edit_grade_3_to_1(self):
@@ -137,97 +137,97 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_edit_grade_id_out_of_range(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(4, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(4, 4)
 
     def test_edit_grade_id_out_of_range_2(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(-3, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(-3, 4)
 
     def test_edit_grade_grade_out_of_range(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, 7)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(1, 7)
 
     def test_edit_grade_grade_out_of_range_2(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, -5)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(1, -5)
 
     def test_edit_grade_string_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with('Polski', 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with('Polski', 4)
 
     def test_edit_grade_string_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, 'abc')
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, 'abc')
 
     def test_edit_grade_string(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with('Polski', 'abc')
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with('Polski', 'abc')
 
     def test_edit_grade_float_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(3.14, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(3.14, 4)
 
     def test_edit_grade_float_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, 3.14)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, 3.14)
 
     def test_edit_grade_float(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(3.14, 2.56)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(3.14, 2.56)
 
     def test_edit_grade_negative_float_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(-3.14, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(-3.14, 4)
 
     def test_edit_grade_negative_float_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, -3.14)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, -3.14)
 
     def test_edit_grade_negative_float(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(-3.14, -2.56)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(-3.14, -2.56)
 
     def test_edit_grade_negative_int_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(-3, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(-3, 4)
 
     def test_edit_grade_negative_int_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, -3)
+        assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(1, -3)
 
     def test_edit_grade_negative_int(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(-3.14, -2)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(-3.14, -2)
 
     def test_edit_grade_none_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(None, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(None, 4)
 
     def test_edit_grade_none_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, None)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, None)
 
     def test_edit_grade_none(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(None, None)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(None, None)
 
     def test_edit_grade_object_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with({}, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with({}, 4)
 
     def test_edit_grade_object_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, {})
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, {})
 
     def test_edit_grade_object(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with({}, {})
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with({}, {})
 
     def test_edit_grade_array_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with([], 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with([], 4)
 
     def test_edit_grade_array_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, [])
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, [])
 
     def test_edit_grade_array(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with([], [])
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with([], [])
 
     def test_edit_grade_true_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(True, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(True, 4)
 
     def test_edit_grade_true_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, True)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, True)
 
     def test_edit_grade_true(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(True, True)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(True, True)
 
     def test_edit_grade_false_id(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(False, 4)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(False, 4)
 
     def test_edit_grade_false_grade(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(1, False)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(1, False)
 
     def test_edit_grade_false(self):
-        assert_that(self.temp_with_grades.edit_grade).raises(Exception).when_called_with(False, False)
+        assert_that(self.temp_with_grades.edit_grade).raises(TypeError).when_called_with(False, False)
 
     # Testy delete_grade
     def test_delete_grade(self):
@@ -250,43 +250,43 @@ class test_SchoolSubject(unittest.TestCase):
         })
 
     def test_delete_grade_out_of_range(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(0)
+        assert_that(self.temp.delete_grade).raises(ValueError).when_called_with(0)
 
     def test_delete_grade_out_of_range_2(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(3)
+        assert_that(self.temp.delete_grade).raises(ValueError).when_called_with(3)
 
     def test_delete_grade_out_of_range_8(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(8)
+        assert_that(self.temp.delete_grade).raises(ValueError).when_called_with(8)
 
     def test_delete_grade_negative_int(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(-2)
+        assert_that(self.temp.delete_grade).raises(ValueError).when_called_with(-2)
 
     def test_delete_grade_negative_float(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(-3.1)
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with(-3.1)
 
     def test_delete_grade_float(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(2.45)
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with(2.45)
 
     def test_delete_grade_object(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with({})
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with({})
 
     def test_delete_grade_array(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with([])
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with([])
 
     def test_delete_grade_none(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(None)
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with(None)
 
     def test_delete_grade_true(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(True)
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with(True)
 
     def test_delete_grade_false(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with(False)
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with(False)
 
     def test_delete_grade_string(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with('abc')
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with('abc')
 
     def test_delete_grade_string_number(self):
-        assert_that(self.temp.delete_grade).raises(Exception).when_called_with('5')
+        assert_that(self.temp.delete_grade).raises(TypeError).when_called_with('5')
 
     # Testy average_of_subject
     def test_average_of_subject(self):

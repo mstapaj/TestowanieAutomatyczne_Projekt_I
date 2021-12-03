@@ -2,7 +2,7 @@ def check_subject_name(name):
     if isinstance(name, str):
         return True
     else:
-        raise Exception('Nazwa przedmiotu nie jest typu string')
+        raise TypeError('Nazwa przedmiotu nie jest typu string')
 
 
 def check_grade(grade):
@@ -10,9 +10,9 @@ def check_grade(grade):
         if 0 < grade < 7:
             return True
         else:
-            raise Exception('Ocena nie jest z przedziału 1-6')
+            raise ValueError('Ocena nie jest z przedziału 1-6')
     else:
-        raise Exception('Ocena nie jest typu int')
+        raise TypeError('Ocena nie jest typu int')
 
 
 def check_grade_id(grade_id, subject):
@@ -20,6 +20,6 @@ def check_grade_id(grade_id, subject):
         if 0 < grade_id < len(subject.grades) + 1:
             return True
         else:
-            raise Exception('Brak oceny o takim Id')
+            raise ValueError('Brak oceny o takim Id')
     else:
-        raise Exception('Id oceny nie jest typu int')
+        raise TypeError('Id oceny nie jest typu int')
