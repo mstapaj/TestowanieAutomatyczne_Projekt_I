@@ -246,3 +246,61 @@ def test_check_remark_text_negative_int():
 def test_check_remark_text_negative_float():
     with pytest.raises(TypeError):
         check_remark_text(-7.12)
+
+
+# Testy check_subject_name
+def test_check_subject_name():
+    assert check_subject_name('Fizyka') == True
+
+
+def test_check_subject_name_2():
+    assert check_subject_name('Matematyka') == True
+
+
+def test_check_subject_name_3():
+    assert check_subject_name('abcdefghijklmnopqrsteuwyxz') == True
+
+
+def test_check_subject_name_none():
+    with pytest.raises(TypeError):
+        check_subject_name(None)
+
+
+def test_check_subject_name_object():
+    with pytest.raises(TypeError):
+        check_subject_name([])
+
+
+def test_check_subject_name_array():
+    with pytest.raises(TypeError):
+        check_subject_name({})
+
+
+def test_check_subject_name_true():
+    with pytest.raises(TypeError):
+        check_subject_name(True)
+
+
+def test_check_subject_name_false():
+    with pytest.raises(TypeError):
+        check_subject_name(False)
+
+
+def test_check_subject_name_int():
+    with pytest.raises(TypeError):
+        check_subject_name(12)
+
+
+def test_check_subject_name_float():
+    with pytest.raises(TypeError):
+        check_subject_name(4.12)
+
+
+def test_check_subject_name_negative_int():
+    with pytest.raises(TypeError):
+        check_subject_name(-3)
+
+
+def test_check_subject_name_negative_float():
+    with pytest.raises(TypeError):
+        check_subject_name(-7.12)

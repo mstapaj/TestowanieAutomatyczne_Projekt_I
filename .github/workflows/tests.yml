@@ -12,7 +12,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install assertpy PyHamcrest nose2 coverage
+          pip install assertpy PyHamcrest nose2 coverage pytest
       - name: Run tests
         run: |
             nose2 --with-coverage
