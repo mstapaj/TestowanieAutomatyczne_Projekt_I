@@ -102,6 +102,18 @@ class SchoolDiary:
             return result
 
     def add_subject_to_student(self, student_id, name):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.add_subject_to_student(1,'Matematyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka']}
+        >>> c.add_subject_to_student(1,'Fizyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka', 'Fizyka']}
+        >>> c=None
+        """
         if check_student_id(student_id, self):
             if check_subject_name(name):
                 return self.students[student_id - 1].add_subject(name)
