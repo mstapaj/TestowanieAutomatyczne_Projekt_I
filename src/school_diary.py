@@ -12,6 +12,14 @@ class SchoolDiary:
         self.students = []
 
     def add_student(self, firstname, lastname, age):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c=None
+        """
         if check_firstname(firstname):
             if check_lastname(lastname):
                 if check_age(age):
@@ -173,6 +181,13 @@ class SchoolDiary:
             for m in range(len(eval(dict_from_csv[i]['Uwagi']))):
                 self.add_remark_to_student(i + 1, eval(dict_from_csv[i]['Uwagi'])[m])
         return 'Zaimportowano dane'
+
+
+if __name__ == "__main__":
+    import doctest
+
+    # doctest.testmod()
+    doctest.testmod(extraglobs={'c': SchoolDiary()})
 
 # Testy eksportowania danych
 # dziennik = SchoolDiary()
