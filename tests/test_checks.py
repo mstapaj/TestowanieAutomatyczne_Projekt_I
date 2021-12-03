@@ -186,3 +186,63 @@ def test_check_age_negative_int():
 def test_check_age_negative_float():
     with pytest.raises(TypeError):
         check_age(-7.12)
+
+
+# Testy check_remark_text
+def test_check_remark_text():
+    assert check_remark_text('Uwaga1') == True
+
+
+def test_check_remark_text_2():
+    assert check_remark_text('Uwaga z większą ilością tekstu') == True
+
+
+def test_check_remark_text_3():
+    assert check_remark_text('Bardzo długa uwaga '
+                             'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb') \
+           == True
+
+
+def test_check_remark_text_none():
+    with pytest.raises(TypeError):
+        check_remark_text(None)
+
+
+def test_check_remark_text_object():
+    with pytest.raises(TypeError):
+        check_remark_text([])
+
+
+def test_check_remark_text_array():
+    with pytest.raises(TypeError):
+        check_remark_text({})
+
+
+def test_check_remark_text_true():
+    with pytest.raises(TypeError):
+        check_remark_text(True)
+
+
+def test_check_remark_text_false():
+    with pytest.raises(TypeError):
+        check_remark_text(False)
+
+
+def test_check_remark_text_int():
+    with pytest.raises(TypeError):
+        check_remark_text(12)
+
+
+def test_check_remark_text_float():
+    with pytest.raises(TypeError):
+        check_remark_text(4.12)
+
+
+def test_check_remark_text_negative_int():
+    with pytest.raises(TypeError):
+        check_remark_text(-3)
+
+
+def test_check_remark_text_negative_float():
+    with pytest.raises(TypeError):
+        check_remark_text(-7.12)
