@@ -47,6 +47,20 @@ class SchoolDiary:
         return result
 
     def edit_student(self, student_id, firstname=None, lastname=None, age=None):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.edit_student(2,'Paweł','Pawłowski',10)
+        {'firstname': 'Paweł', 'lastname': 'Pawłowski', 'age': 10}
+        >>> c.edit_student(1,age=17)
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 17}
+        >>> c.edit_student(1,firstname='Kamil')
+        {'firstname': 'Kamil', 'lastname': 'Kowalski', 'age': 17}
+        >>> c=None
+        """
         if check_student_id(student_id, self):
             temp = {
                 'firstname': None,
