@@ -304,3 +304,86 @@ def test_check_subject_name_negative_int():
 def test_check_subject_name_negative_float():
     with pytest.raises(TypeError):
         check_subject_name(-7.12)
+
+
+# Testy check_grade
+def test_check_grade():
+    assert check_grade(3) == True
+
+
+def test_check_grade_2():
+    assert check_grade(6) == True
+
+
+def test_check_grade_3():
+    assert check_grade(1) == True
+
+
+def test_check_grade_zero():
+    with pytest.raises(ValueError):
+        check_grade(0)
+
+
+def test_check_grade_above_6():
+    with pytest.raises(ValueError):
+        check_grade(7)
+
+
+def test_check_grade_above_6_2():
+    with pytest.raises(ValueError):
+        check_grade(18)
+
+
+def test_check_grade_below_zero():
+    with pytest.raises(ValueError):
+        check_grade(-2)
+
+
+def test_check_grade_none():
+    with pytest.raises(TypeError):
+        check_grade(None)
+
+
+def test_check_grade_object():
+    with pytest.raises(TypeError):
+        check_grade([])
+
+
+def test_check_grade_array():
+    with pytest.raises(TypeError):
+        check_grade({})
+
+
+def test_check_grade_true():
+    with pytest.raises(TypeError):
+        check_grade(True)
+
+
+def test_check_grade_false():
+    with pytest.raises(TypeError):
+        check_grade(False)
+
+
+def test_check_grade_string():
+    with pytest.raises(TypeError):
+        check_grade('abc')
+
+
+def test_check_grade_string_number():
+    with pytest.raises(TypeError):
+        check_grade('12')
+
+
+def test_check_grade_float():
+    with pytest.raises(TypeError):
+        check_grade(4.12)
+
+
+def test_check_grade_negative_int():
+    with pytest.raises(ValueError):
+        check_grade(-3)
+
+
+def test_check_grade_negative_float():
+    with pytest.raises(TypeError):
+        check_grade(-7.12)
