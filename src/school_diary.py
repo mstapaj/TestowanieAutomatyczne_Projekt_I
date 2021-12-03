@@ -256,6 +256,26 @@ class SchoolDiary:
                         return self.students[student_id - 1].edit_grade(subject_id, grade_id, grade)
 
     def delete_grade_in_student_in_subject(self, student_id, subject_id, grade_id):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.add_subject_to_student(1,'Matematyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka']}
+        >>> c.add_subject_to_student(1,'Fizyka')
+        {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka', 'Fizyka']}
+        >>> c.add_grade_in_student_in_subject(1,1,3)
+        {'Matematyka': [3], 'Fizyka': []}
+        >>> c.add_grade_in_student_in_subject(1,1,6)
+        {'Matematyka': [3, 6], 'Fizyka': []}
+        >>> c.delete_grade_in_student_in_subject(1,1,2)
+        [3]
+        >>> c.delete_grade_in_student_in_subject(1,1,1)
+        []
+        >>> c=None
+        """
         if check_student_id(student_id, self):
             if check_subject_id(student_id, subject_id, self):
                 if check_grade_id(student_id, subject_id, grade_id, self):
