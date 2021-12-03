@@ -118,3 +118,71 @@ def test_check_lastname_negative_int():
 def test_check_lastname_negative_float():
     with pytest.raises(TypeError):
         check_lastname(-7.12)
+
+
+# Testy check_age
+def test_check_age():
+    assert check_age(12) == True
+
+
+def test_check_age_2():
+    assert check_age(8) == True
+
+
+def test_check_age_3():
+    assert check_age(75) == True
+
+
+def test_check_age_below_zero():
+    with pytest.raises(ValueError):
+        check_age(-2)
+
+
+def test_check_age_none():
+    with pytest.raises(TypeError):
+        check_age(None)
+
+
+def test_check_age_object():
+    with pytest.raises(TypeError):
+        check_age([])
+
+
+def test_check_age_array():
+    with pytest.raises(TypeError):
+        check_age({})
+
+
+def test_check_age_true():
+    with pytest.raises(TypeError):
+        check_age(True)
+
+
+def test_check_age_false():
+    with pytest.raises(TypeError):
+        check_age(False)
+
+
+def test_check_age_string():
+    with pytest.raises(TypeError):
+        check_age('abc')
+
+
+def test_check_age_string_number():
+    with pytest.raises(TypeError):
+        check_age('12')
+
+
+def test_check_age_float():
+    with pytest.raises(TypeError):
+        check_age(4.12)
+
+
+def test_check_age_negative_int():
+    with pytest.raises(ValueError):
+        check_age(-3)
+
+
+def test_check_age_negative_float():
+    with pytest.raises(TypeError):
+        check_age(-7.12)
