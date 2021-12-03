@@ -31,6 +31,16 @@ class SchoolDiary:
                     return result
 
     def show_students(self):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.show_students()
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c=None
+        """
         result = []
         for i in self.students:
             result.append(i.get_details())
