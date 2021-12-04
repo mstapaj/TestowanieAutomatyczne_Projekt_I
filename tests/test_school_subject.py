@@ -39,6 +39,12 @@ class test_SchoolSubject(unittest.TestCase):
     def test_get_details_is_not_none(self):
         assert_that(self.temp_with_grades.get_details()).is_not_none()
 
+    def test_get_details_contains_key_grades(self):
+        assert_that(self.temp_with_grades.get_details()).contains_key('grades')
+
+    def test_get_details_contains_key_name(self):
+        assert_that(self.temp_with_grades.get_details()).contains_key('name')
+
     def test_get_details_custom_matcher(self):
         assert_that(self.temp_with_grades.get_details()).is_length_of_grades_above_or_equal_2()
 
@@ -49,8 +55,14 @@ class test_SchoolSubject(unittest.TestCase):
             'grades': []
         })
 
-    def test_edit_subject_Fizyka(self):
+    def test_edit_subject_Fizyka_is_not_none(self):
         assert_that(self.temp.edit_subject('Fizyka')).is_not_none()
+
+    def test_edit_subject_contains_key_grades(self):
+        assert_that(self.temp_with_grades.edit_subject('Chemia')).contains_key('grades')
+
+    def test_edit_subject_contains_key_name(self):
+        assert_that(self.temp_with_grades.edit_subject('Biologia')).contains_key('name')
 
     # Test nie przechodzi zgodnie z założeniami matchera
     # def test_edit_subject_custom_matcher_failed(self):
@@ -283,6 +295,11 @@ class test_SchoolSubject(unittest.TestCase):
         self.temp_with_grades.delete_grade(2)
         assert_that(self.temp_with_grades.delete_grade(1)).is_not_none()
 
+    def test_delete_grade_contains_key_grades(self):
+        assert_that(self.temp_with_grades.delete_grade(1)).contains_key('grades')
+
+    def test_delete_grade_contains_key_name(self):
+        assert_that(self.temp_with_grades.delete_grade(2)).contains_key('name')
 
     def test_delete_grade_out_of_range(self):
         assert_that(self.temp.delete_grade).raises(ValueError).when_called_with(0)
