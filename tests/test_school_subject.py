@@ -330,6 +330,12 @@ class test_SchoolSubject(unittest.TestCase):
     def test_average_of_subject_2(self):
         assert_that(self.temp_with_grades_2.average_of_subject()).is_equal_to(3.67)
 
+    def test_average_of_subject_is_not_zero(self):
+        assert_that(self.temp_with_grades.average_of_subject()).is_not_zero()
+
+    def test_average_of_subject_is_not_zero_2(self):
+        assert_that(self.temp_with_grades_2.average_of_subject()).is_not_zero()
+
     def tearDown(self):
         self.temp = None
         self.temp_with_grades = None
