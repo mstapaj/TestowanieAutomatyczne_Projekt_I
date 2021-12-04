@@ -27,6 +27,9 @@ class test_Student(unittest.TestCase):
             'age': 12
         }))
 
+    def test_get_details_has_key(self):
+        assert_that(self.temp.get_details(), has_key('age'))
+
     # Testy edit_student
     def test_edit_student(self):
         assert_that(self.temp.edit_student('Marcin', 'Nowak', 10), equal_to({
@@ -76,6 +79,9 @@ class test_Student(unittest.TestCase):
             'lastname': 'Kowalski',
             'age': 12
         }))
+
+    def test_edit_student_has_key(self):
+        assert_that(self.temp.edit_student(firstname='Marcin'), has_key('firstname'))
 
     def test_edit_student_firstname_object(self):
         assert_that(calling(self.temp.edit_student).with_args({}, 'Nowak', 10), raises(TypeError))
@@ -169,6 +175,9 @@ class test_Student(unittest.TestCase):
             'age': 12,
             'subjects': ['Matematyka', 'Polski']
         }))
+
+    def test_add_subject_has_key(self):
+        assert_that(self.temp.add_subject('Polski'), has_key('subjects'))
 
     def test_add_subject_none(self):
         assert_that(calling(self.temp.add_subject).with_args(None), raises(TypeError))
