@@ -1,0 +1,18 @@
+add 1 Uwaga3 ['Uwaga1','Uwaga2','Uwaga3']
+add 1 Uwaga4 ['Uwaga1','Uwaga2','Uwaga3','Uwaga4']
+add 2 Uwaga1 ['Uwaga1']
+add 2 Uwaga2 ['Uwaga1','Uwaga2']
+get 1 ['Uwaga1','Uwaga2','Uwaga3','Uwaga4']
+get 2 ['Uwaga1','Uwaga2']
+edit 1 3 Uwaga3PoEdycji ['Uwaga1','Uwaga2','Uwaga3PoEdycji','Uwaga4']
+edit 1 1 Uwaga1PoEdycji ['Uwaga1PoEdycji','Uwaga2','Uwaga3PoEdycji','Uwaga4']
+edit 2 1 Uwaga1PoEdycji ['Uwaga1PoEdycji','Uwaga2']
+edit 2 2 Uwaga2PoEdycji ['Uwaga1PoEdycji','Uwaga2PoEdycji']
+del 1 3 ['Uwaga1PoEdycji','Uwaga2','Uwaga4']
+del 1 2 ['Uwaga1PoEdycji','Uwaga4']
+del 1 2 ['Uwaga1PoEdycji']
+del 1 1 []
+del 2 2 ['Uwaga1PoEdycji']
+del 2 1 []
+
+
