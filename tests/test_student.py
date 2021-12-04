@@ -743,6 +743,12 @@ class test_Student(unittest.TestCase):
     def test_average_of_subject_2(self):
         assert_that(self.temp_with_grades.average_of_subject(2), equal_to(2))
 
+    def test_average_of_subject_greater_than(self):
+        assert_that(self.temp_with_grades.average_of_subject(1), greater_than(3.0))
+
+    def test_average_of_subject_greater_than_2(self):
+        assert_that(self.temp_with_grades.average_of_subject(2), greater_than(1.8))
+
     def test_average_of_subject_subject_id_out_of_range(self):
         assert_that(calling(self.temp_with_grades.average_of_subject).with_args(-1), raises(ValueError))
 
@@ -785,6 +791,12 @@ class test_Student(unittest.TestCase):
 
     def test_average_of_student_2(self):
         assert_that(self.temp_with_subjects.average_of_student(), equal_to(1.0))
+
+    def test_average_of_student_greater_than(self):
+        assert_that(self.temp_with_subjects.average_of_student(), greater_than(0.9))
+
+    def test_average_of_student_greater_than_2(self):
+        assert_that(self.temp_with_grades.average_of_student(), greater_than(2.0))
 
     # Testy add_remark
     def test_add_remark(self):
