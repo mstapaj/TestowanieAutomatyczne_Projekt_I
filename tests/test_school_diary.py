@@ -1680,6 +1680,14 @@ class test_school_diary(unittest.TestCase):
     def test_average_of_subject_in_student_2(self):
         assert_that(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student(1, 2), equal_to(2))
 
+    def test_average_of_subject_in_student_close_to(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student(1, 2),
+                    close_to(1.8, 0.25))
+
+    def test_average_of_subject_in_student_close_to_2(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student(1, 1),
+                    close_to(3, 0.6))
+
     def test_average_of_subject_in_student_id_out_of_range(self):
         assert_that(
             calling(self.temp_with_student_with_subject_with_grades.average_of_subject_in_student).with_args(0, 1),
@@ -1832,6 +1840,12 @@ class test_school_diary(unittest.TestCase):
 
     def test_average_of_student_2(self):
         assert_that(self.temp_with_student_with_subject.average_of_student(1), equal_to(1.0))
+
+    def test_average_of_student_close_to(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_student(1), close_to(2,0.55))
+
+    def test_average_of_student_close_to_2(self):
+        assert_that(self.temp_with_student_with_subject.average_of_student(1), close_to(0.9,0.15))
 
     def test_average_of_student_out_of_range(self):
         assert_that(calling(self.temp_with_student_with_subject_with_grades.average_of_student).with_args(0),
