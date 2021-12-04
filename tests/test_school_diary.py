@@ -2344,6 +2344,12 @@ class test_school_diary(unittest.TestCase):
         assert_that(calling(self.temp_with_students_with_remarks.delete_remark_in_student).with_args(-3.12, -4.33),
                     raises(TypeError))
 
+    def test_export_data_to_csv(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.export_data_to_csv(),equal_to('Wyeksportowano dane'))
+
+    def test_import_data_from_csv(self):
+        assert_that(self.temp_with_student_with_subject_with_grades.import_data_from_csv(),equal_to('Zaimportowano dane'))
+
     def tearDown(self):
         self.temp = None
         self.temp_with_students = None

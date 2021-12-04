@@ -18,6 +18,12 @@ class test_Student(unittest.TestCase):
         self.temp_with_remarks = Student('Paweł', 'Pawłowski', 15)
         self.temp_with_remarks.add_remark('Uwaga 1')
         self.temp_with_remarks.add_remark('Uwaga 2')
+        self.temp_with_average = Student('Tomek', 'Pawłowski', 15)
+        self.temp_with_average.add_subject('Matematyka')
+        self.temp_with_average.add_subject('Polski')
+        self.temp_with_average.add_grade(1, 4)
+        self.temp_with_average.add_grade(1, 5)
+        self.temp_with_average.add_grade(2, 4)
 
     # Testy get_details
     def test_get_details(self):
@@ -797,6 +803,12 @@ class test_Student(unittest.TestCase):
 
     def test_average_of_student_2(self):
         assert_that(self.temp_with_subjects.average_of_student(), equal_to(1.0))
+
+    def test_average_of_student_3(self):
+        assert_that(self.temp_with_average.average_of_student(), equal_to(4.0))
+
+    def test_average_of_student_without_grades(self):
+        assert_that(self.temp.average_of_student(), equal_to(0))
 
     def test_average_of_student_greater_than(self):
         assert_that(self.temp_with_subjects.average_of_student(), greater_than(0.9))
