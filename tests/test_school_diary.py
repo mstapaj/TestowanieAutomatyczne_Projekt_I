@@ -45,6 +45,10 @@ class test_school_diary(unittest.TestCase):
             {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}
         ]))
 
+    def test_add_student_has_length(self):
+        self.temp.add_student('Ola', 'Kot', 17)
+        assert_that(self.temp.add_student('Jan', 'Kowalski', 12), has_length(2))
+
     def test_add_student_firstname_object(self):
         assert_that(calling(self.temp.add_student).with_args({}, 'Nowak', 10), raises(TypeError))
 
@@ -127,6 +131,9 @@ class test_school_diary(unittest.TestCase):
             {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17}
         ]))
 
+    def test_show_students_has_length(self):
+        assert_that(self.temp_with_students.show_students(), has_length(2))
+
     def test_show_students_2(self):
         assert_that(self.temp.show_students(), equal_to([]))
 
@@ -137,6 +144,10 @@ class test_school_diary(unittest.TestCase):
             'lastname': 'Nowak',
             'age': 10
         }))
+
+    def test_edit_student_has_length(self):
+        assert_that(self.temp_with_students.edit_student(1, firstname='Marcin', lastname='Nowak', age=10),
+                    has_length(3))
 
     def test_edit_student_without_age(self):
         assert_that(self.temp_with_students.edit_student(1, firstname='Marcin', lastname='Nowak'), equal_to({
@@ -277,6 +288,10 @@ class test_school_diary(unittest.TestCase):
     def test_delete_student_3(self):
         self.temp_with_students.delete_student(2)
         assert_that(self.temp_with_students.delete_student(1), equal_to([]))
+
+    def test_delete_student_has_length(self):
+        self.temp_with_students.delete_student(2)
+        assert_that(self.temp_with_students.delete_student(1), has_length(0))
 
     def test_delete_student_out_of_range(self):
         assert_that(calling(self.temp_with_students.delete_student).with_args(0), raises(ValueError))
