@@ -368,6 +368,20 @@ class SchoolDiary:
             return self.students[student_id - 1].get_remarks()
 
     def edit_remark_in_student(self, student_id, remark_id, text):
+        """
+        >>> c=SchoolDiary()
+        >>> c.add_student('Jan','Kowalski',12)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}]
+        >>> c.add_student('Ola','Kot',8)
+        [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
+        >>> c.add_remark_to_student(1,'Uwaga 1')
+        ['Uwaga 1']
+        >>> c.add_remark_to_student(1,'Uwaga 2')
+        ['Uwaga 1', 'Uwaga 2']
+        >>> c.edit_remark_in_student(1,1,'Uwaga 1 po edycji')
+        ['Uwaga 1 po edycji', 'Uwaga 2']
+        >>> c=None
+        """
         if check_student_id(student_id, self):
             if check_remark_id(student_id, remark_id, self):
                 if check_remark_text(text):
