@@ -55,7 +55,7 @@ class test_SchoolSubject(unittest.TestCase):
             'grades': []
         })
 
-    def test_edit_subject_Angielski_is_type_of(self):
+    def test_edit_subject_Angielski_contains_value(self):
         assert_that(self.temp_with_grades.edit_subject('Angielski')).contains_value('Angielski')
 
     def test_edit_subject_Fizyka_is_not_none(self):
@@ -129,7 +129,7 @@ class test_SchoolSubject(unittest.TestCase):
             'grades': [1]
         })
 
-    def test_add_grade_6_is_type_of(self):
+    def test_add_grade_6_contains_value(self):
         assert_that(self.temp.add_grade(6)).contains_value([6])
 
     def test_add_grade_7(self):
@@ -184,7 +184,7 @@ class test_SchoolSubject(unittest.TestCase):
     def test_edit_grade_3_to_2_custom_matcher(self):
         assert_that(self.temp_with_grades.edit_grade(1, 2)).is_length_of_grades_above_or_equal_2()
 
-    def test_edit_grade_3_to_2_is_type_of(self):
+    def test_edit_grade_3_to_2_contains_value(self):
         assert_that(self.temp_with_grades.edit_grade(1, 2)).contains_value([2,6])
 
     def test_edit_grade_id_out_of_range(self):
