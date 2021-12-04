@@ -3,6 +3,15 @@ from assertpy import *
 from src.school_subject import SchoolSubject
 
 
+def is_length_of_grades_above_or_equal_2(self):
+    if len(self.val['grades']) < 2:
+        return self.error('Ilość ocen nie jest równe lub powyżej 2!')
+    return self
+
+
+add_extension(is_length_of_grades_above_or_equal_2)
+
+
 class test_SchoolSubject(unittest.TestCase):
     def setUp(self):
         self.temp = SchoolSubject('Polski')
@@ -27,12 +36,19 @@ class test_SchoolSubject(unittest.TestCase):
             'grades': [3, 6]
         })
 
+    def test_get_details_custom_matcher(self):
+        assert_that(self.temp_with_grades.get_details()).is_length_of_grades_above_or_equal_2()
+
     # Testy edit_subject
     def test_edit_subject_Matematyka(self):
         assert_that(self.temp.edit_subject('Matematyka')).is_equal_to({
             'name': 'Matematyka',
             'grades': []
         })
+
+    # Test nie przechodzi zgodnie z założeniami matchera
+    # def test_edit_subject_custom_matcher_failed(self):
+    #     assert_that(self.temp.edit_subject('Fizyka')).is_length_of_grades_above_or_equal_2()
 
     def test_edit_subject_int(self):
         assert_that(self.temp.edit_subject).raises(TypeError).when_called_with(25)
@@ -80,6 +96,11 @@ class test_SchoolSubject(unittest.TestCase):
             'name': 'Polski',
             'grades': [5, 3]
         })
+
+    def test_add_grade_2_4_3(self):
+        self.temp.add_grade(2)
+        self.temp.add_grade(4)
+        assert_that(self.temp.add_grade(3)).is_length_of_grades_above_or_equal_2()
 
     def test_add_grade_1(self):
         assert_that(self.temp.add_grade(1)).is_equal_to({
@@ -135,6 +156,9 @@ class test_SchoolSubject(unittest.TestCase):
             'name': 'Matematyka',
             'grades': [3, 4]
         })
+
+    def test_edit_grade_3_to_2(self):
+        assert_that(self.temp_with_grades.edit_grade(1, 2)).is_length_of_grades_above_or_equal_2()
 
     def test_edit_grade_id_out_of_range(self):
         assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(4, 4)
