@@ -185,7 +185,7 @@ class test_SchoolSubject(unittest.TestCase):
         assert_that(self.temp_with_grades.edit_grade(1, 2)).is_length_of_grades_above_or_equal_2()
 
     def test_edit_grade_3_to_2_contains_value(self):
-        assert_that(self.temp_with_grades.edit_grade(1, 2)).contains_value([2,6])
+        assert_that(self.temp_with_grades.edit_grade(1, 2)).contains_value([2, 6])
 
     def test_edit_grade_id_out_of_range(self):
         assert_that(self.temp_with_grades.edit_grade).raises(ValueError).when_called_with(4, 4)

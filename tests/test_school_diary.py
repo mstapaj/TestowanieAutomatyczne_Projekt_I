@@ -1842,10 +1842,10 @@ class test_school_diary(unittest.TestCase):
         assert_that(self.temp_with_student_with_subject.average_of_student(1), equal_to(1.0))
 
     def test_average_of_student_close_to(self):
-        assert_that(self.temp_with_student_with_subject_with_grades.average_of_student(1), close_to(2,0.55))
+        assert_that(self.temp_with_student_with_subject_with_grades.average_of_student(1), close_to(2, 0.55))
 
     def test_average_of_student_close_to_2(self):
-        assert_that(self.temp_with_student_with_subject.average_of_student(1), close_to(0.9,0.15))
+        assert_that(self.temp_with_student_with_subject.average_of_student(1), close_to(0.9, 0.15))
 
     def test_average_of_student_out_of_range(self):
         assert_that(calling(self.temp_with_student_with_subject_with_grades.average_of_student).with_args(0),
@@ -2345,10 +2345,12 @@ class test_school_diary(unittest.TestCase):
                     raises(TypeError))
 
     def test_export_data_to_csv(self):
-        assert_that(self.temp_with_student_with_subject_with_grades.export_data_to_csv(),equal_to('Wyeksportowano dane'))
+        assert_that(self.temp_with_student_with_subject_with_grades.export_data_to_csv(),
+                    equal_to('Wyeksportowano dane'))
 
     def test_import_data_from_csv(self):
-        assert_that(self.temp_with_student_with_subject_with_grades.import_data_from_csv(),equal_to('Zaimportowano dane'))
+        assert_that(self.temp_with_student_with_subject_with_grades.import_data_from_csv(),
+                    equal_to('Zaimportowano dane'))
 
     def tearDown(self):
         self.temp = None

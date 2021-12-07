@@ -92,7 +92,7 @@ class test_Student(unittest.TestCase):
     def test_edit_student_has_key(self):
         assert_that(self.temp.edit_student(firstname='Marcin'), has_key('firstname'))
 
-    def test_add_subject_has_value(self):
+    def test_edit_student_has_value(self):
         assert_that(self.temp.edit_student(firstname='Kamil'), has_value(12))
 
     def test_edit_student_firstname_object(self):
