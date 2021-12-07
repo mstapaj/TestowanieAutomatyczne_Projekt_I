@@ -58,13 +58,12 @@ class Student:
         return result
 
     def edit_subject(self, subject_id, name):
-        if check_subject_id(subject_id, self):
-            if check_subject_name(name):
-                self.subjects[subject_id - 1].edit_subject(name)
-                result = []
-                for i in self.subjects:
-                    result.append(i.get_details()['name'])
-                return result
+        if check_subject_id(subject_id, self) and check_subject_name(name):
+            self.subjects[subject_id - 1].edit_subject(name)
+            result = []
+            for i in self.subjects:
+                result.append(i.get_details()['name'])
+            return result
 
     def delete_subject(self, subject_id):
         if check_subject_id(subject_id, self):
@@ -75,29 +74,25 @@ class Student:
             return result
 
     def add_grade(self, subject_id, grade):
-        if check_subject_id(subject_id, self):
-            if check_grade(grade):
-                self.subjects[subject_id - 1].add_grade(grade)
-                result = {}
-                for i in self.subjects:
-                    temp = i.get_details()
-                    result[temp['name']] = temp['grades']
-                return result
+        if check_subject_id(subject_id, self) and check_grade(grade):
+            self.subjects[subject_id - 1].add_grade(grade)
+            result = {}
+            for i in self.subjects:
+                temp = i.get_details()
+                result[temp['name']] = temp['grades']
+            return result
 
     def get_grades(self, subject_id):
         if check_subject_id(subject_id, self):
             return self.subjects[subject_id - 1].get_details()['grades']
 
     def edit_grade(self, subject_id, grade_id, grade):
-        if check_subject_id(subject_id, self):
-            if check_grade_id(subject_id, grade_id, self):
-                if check_grade(grade):
-                    return self.subjects[subject_id - 1].edit_grade(grade_id, grade)['grades']
+        if check_subject_id(subject_id, self) and check_grade_id(subject_id, grade_id, self) and check_grade(grade):
+            return self.subjects[subject_id - 1].edit_grade(grade_id, grade)['grades']
 
     def delete_grade(self, subject_id, grade_id):
-        if check_subject_id(subject_id, self):
-            if check_grade_id(subject_id, grade_id, self):
-                return self.subjects[subject_id - 1].delete_grade(grade_id)['grades']
+        if check_subject_id(subject_id, self) and check_grade_id(subject_id, grade_id, self):
+            return self.subjects[subject_id - 1].delete_grade(grade_id)['grades']
 
     def average_of_subject(self, subject_id):
         if check_subject_id(subject_id, self):
@@ -135,10 +130,9 @@ class Student:
         return self.remarks
 
     def edit_remark(self, remark_id, text):
-        if check_remark_id(remark_id, self):
-            if check_remark_text(text):
-                self.remarks[remark_id - 1] = text
-                return self.remarks
+        if check_remark_id(remark_id, self) and check_remark_text(text):
+            self.remarks[remark_id - 1] = text
+            return self.remarks
 
     def delete_remark(self, remark_id):
         if check_remark_id(remark_id, self):

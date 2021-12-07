@@ -29,13 +29,12 @@ class SchoolSubject:
             }
 
     def edit_grade(self, grade_id, grade):
-        if check_grade_id(grade_id, self):
-            if check_grade(grade):
-                self.grades[grade_id - 1] = grade
-                return {
-                    'name': self.name,
-                    'grades': self.grades
-                }
+        if check_grade_id(grade_id, self) and check_grade(grade):
+            self.grades[grade_id - 1] = grade
+            return {
+                'name': self.name,
+                'grades': self.grades
+            }
 
     def delete_grade(self, grade_id):
         if check_grade_id(grade_id, self):

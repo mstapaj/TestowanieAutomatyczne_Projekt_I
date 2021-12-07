@@ -20,15 +20,13 @@ class SchoolDiary:
         [{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12}, {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}]
         >>> c=None
         """
-        if check_firstname(firstname):
-            if check_lastname(lastname):
-                if check_age(age):
-                    student = Student(firstname, lastname, age)
-                    self.students.append(student)
-                    result = []
-                    for i in self.students:
-                        result.append(i.get_details())
-                    return result
+        if check_firstname(firstname) and check_lastname(lastname) and check_age(age):
+            student = Student(firstname, lastname, age)
+            self.students.append(student)
+            result = []
+            for i in self.students:
+                result.append(i.get_details())
+            return result
 
     def show_students(self):
         """
@@ -114,9 +112,8 @@ class SchoolDiary:
         {'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'subjects': ['Matematyka', 'Fizyka']}
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_name(name):
-                return self.students[student_id - 1].add_subject(name)
+        if check_student_id(student_id, self) and check_subject_name(name):
+            return self.students[student_id - 1].add_subject(name)
 
     def get_subjects_from_student(self, student_id):
         """
@@ -155,10 +152,9 @@ class SchoolDiary:
         ['Angielski', 'Chemia']
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                if check_subject_name(name):
-                    return self.students[student_id - 1].edit_subject(subject_id, name)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self) and check_subject_name(
+                name):
+            return self.students[student_id - 1].edit_subject(subject_id, name)
 
     def delete_subject_in_student(self, student_id, subject_id):
         """
@@ -177,9 +173,8 @@ class SchoolDiary:
         []
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                return self.students[student_id - 1].delete_subject(subject_id)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self):
+            return self.students[student_id - 1].delete_subject(subject_id)
 
     def add_grade_in_student_in_subject(self, student_id, subject_id, grade):
         """
@@ -198,10 +193,8 @@ class SchoolDiary:
         {'Matematyka': [3, 6], 'Fizyka': []}
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                if check_grade(grade):
-                    return self.students[student_id - 1].add_grade(subject_id, grade)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self) and check_grade(grade):
+            return self.students[student_id - 1].add_grade(subject_id, grade)
 
     def get_grades_in_student_from_subject(self, student_id, subject_id):
         """
@@ -224,9 +217,8 @@ class SchoolDiary:
         []
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                return self.students[student_id - 1].get_grades(subject_id)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self):
+            return self.students[student_id - 1].get_grades(subject_id)
 
     def edit_grade_in_student_in_subject(self, student_id, subject_id, grade_id, grade):
         """
@@ -249,11 +241,9 @@ class SchoolDiary:
         [1, 4]
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                if check_grade_id(student_id, subject_id, grade_id, self):
-                    if check_grade(grade):
-                        return self.students[student_id - 1].edit_grade(subject_id, grade_id, grade)
+        if check_student_id(student_id, self) and check_grade_id(student_id, subject_id, grade_id,
+                                                                 self) and check_grade(grade):
+            return self.students[student_id - 1].edit_grade(subject_id, grade_id, grade)
 
     def delete_grade_in_student_in_subject(self, student_id, subject_id, grade_id):
         """
@@ -276,10 +266,9 @@ class SchoolDiary:
         []
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                if check_grade_id(student_id, subject_id, grade_id, self):
-                    return self.students[student_id - 1].delete_grade(subject_id, grade_id)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self) and check_grade_id(
+                student_id, subject_id, grade_id, self):
+            return self.students[student_id - 1].delete_grade(subject_id, grade_id)
 
     def average_of_subject_in_student(self, student_id, subject_id):
         """
@@ -302,9 +291,8 @@ class SchoolDiary:
         0
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_subject_id(student_id, subject_id, self):
-                return self.students[student_id - 1].average_of_subject(subject_id)
+        if check_student_id(student_id, self) and check_subject_id(student_id, subject_id, self):
+            return self.students[student_id - 1].average_of_subject(subject_id)
 
     def average_of_student(self, student_id):
         """
@@ -343,9 +331,8 @@ class SchoolDiary:
         ['Uwaga 1', 'Uwaga 2']
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_remark_text(text):
-                return self.students[student_id - 1].add_remark(text)
+        if check_student_id(student_id, self) and check_remark_text(text):
+            return self.students[student_id - 1].add_remark(text)
 
     def get_remarks_from_student(self, student_id):
         """
@@ -382,10 +369,9 @@ class SchoolDiary:
         ['Uwaga 1 po edycji', 'Uwaga 2']
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_remark_id(student_id, remark_id, self):
-                if check_remark_text(text):
-                    return self.students[student_id - 1].edit_remark(remark_id, text)
+        if check_student_id(student_id, self) and check_remark_id(student_id, remark_id, self) and check_remark_text(
+                text):
+            return self.students[student_id - 1].edit_remark(remark_id, text)
 
     def delete_remark_in_student(self, student_id, remark_id):
         """
@@ -404,9 +390,8 @@ class SchoolDiary:
         []
         >>> c=None
         """
-        if check_student_id(student_id, self):
-            if check_remark_id(student_id, remark_id, self):
-                return self.students[student_id - 1].delete_remark(remark_id)
+        if check_student_id(student_id, self) and check_remark_id(student_id, remark_id, self):
+            return self.students[student_id - 1].delete_remark(remark_id)
 
     def export_data_to_csv(self):
         data = []
