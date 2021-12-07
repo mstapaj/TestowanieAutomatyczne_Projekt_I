@@ -1,9 +1,9 @@
 import unittest
-from hamcrest import *
+from hamcrest import assert_that, equal_to, has_key, raises, has_value, calling, less_than, greater_than
 from src.student import Student
 
 
-class test_Student(unittest.TestCase):
+class TestStudent(unittest.TestCase):
     def setUp(self):
         self.temp = Student('Jan', 'Kowalski', 12)
         self.temp_with_subjects = Student('Paweł', 'Pawłowski', 15)

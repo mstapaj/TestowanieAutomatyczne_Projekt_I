@@ -1,4 +1,4 @@
-from src.checks.checks_school_subject import *
+from src.checks.checks_school_subject import check_subject_name, check_grade, check_grade_id
 
 
 class SchoolSubject:

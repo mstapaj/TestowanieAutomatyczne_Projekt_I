@@ -4,7 +4,7 @@ from parameterized import parameterized, parameterized_class
 from assertpy import assert_that
 
 
-class test_Student(unittest.TestCase):
+class TestStudent(unittest.TestCase):
 
     def setUp(self):
         self.temp = Student('Jan', 'Kowalski', 12)

@@ -1,10 +1,10 @@
 import unittest
-from hamcrest import *
+from hamcrest import assert_that, equal_to, has_length, calling, raises, close_to
 
 from src.school_diary import SchoolDiary
 
 
-class test_school_diary(unittest.TestCase):
+class TestSchoolDiary(unittest.TestCase):
 
     def setUp(self):
         self.temp = SchoolDiary()

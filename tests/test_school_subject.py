@@ -1,5 +1,5 @@
 import unittest
-from assertpy import *
+from assertpy import add_extension, assert_that
 from src.school_subject import SchoolSubject
 
 
@@ -12,7 +12,7 @@ def is_length_of_grades_above_or_equal_2(self):
 add_extension(is_length_of_grades_above_or_equal_2)
 
 
-class test_SchoolSubject(unittest.TestCase):
+class TestSchoolSubject(unittest.TestCase):
     def setUp(self):
         self.temp = SchoolSubject('Polski')
         self.temp_with_grades = SchoolSubject('Matematyka')
