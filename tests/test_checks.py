@@ -6,15 +6,15 @@ from src.checks.checks_school_subject import check_subject_name, check_grade
 
 # Testy check_firstname
 def test_check_firstname():
-    assert check_firstname('Jan') == True
+    assert check_firstname('Jan')
 
 
 def test_check_firstname_2():
-    assert check_firstname('Ola') == True
+    assert check_firstname('Ola')
 
 
 def test_check_firstname_3():
-    assert check_firstname('abcdefghijklmnopqrsteuwyxz') == True
+    assert check_firstname('abcdefghijklmnopqrsteuwyxz')
 
 
 def test_check_firstname_none():
@@ -64,15 +64,15 @@ def test_check_firstname_negative_float():
 
 # Testy check_lastname
 def test_check_lastname():
-    assert check_lastname('Kowalski') == True
+    assert check_lastname('Kowalski')
 
 
 def test_check_lastname_2():
-    assert check_lastname('Nowak') == True
+    assert check_lastname('Nowak')
 
 
 def test_check_lastname_3():
-    assert check_lastname('abcdefghijklmnopqrsteuwyxz') == True
+    assert check_lastname('abcdefghijklmnopqrsteuwyxz')
 
 
 def test_check_lastname_none():
@@ -122,15 +122,15 @@ def test_check_lastname_negative_float():
 
 # Testy check_age
 def test_check_age():
-    assert check_age(12) == True
+    assert check_age(12)
 
 
 def test_check_age_2():
-    assert check_age(8) == True
+    assert check_age(8)
 
 
 def test_check_age_3():
-    assert check_age(75) == True
+    assert check_age(75)
 
 
 def test_check_age_below_zero():
@@ -190,11 +190,11 @@ def test_check_age_negative_float():
 
 # Testy check_remark_text
 def test_check_remark_text():
-    assert check_remark_text('Uwaga1') == True
+    assert check_remark_text('Uwaga1')
 
 
 def test_check_remark_text_2():
-    assert check_remark_text('Uwaga z większą ilością tekstu') == True
+    assert check_remark_text('Uwaga z większą ilością tekstu')
 
 
 def test_check_remark_text_3():
@@ -250,15 +250,15 @@ def test_check_remark_text_negative_float():
 
 # Testy check_subject_name
 def test_check_subject_name():
-    assert check_subject_name('Fizyka') == True
+    assert check_subject_name('Fizyka')
 
 
 def test_check_subject_name_2():
-    assert check_subject_name('Matematyka') == True
+    assert check_subject_name('Matematyka')
 
 
 def test_check_subject_name_3():
-    assert check_subject_name('abcdefghijklmnopqrsteuwyxz') == True
+    assert check_subject_name('abcdefghijklmnopqrsteuwyxz')
 
 
 def test_check_subject_name_none():
@@ -308,15 +308,15 @@ def test_check_subject_name_negative_float():
 
 # Testy check_grade
 def test_check_grade():
-    assert check_grade(3) == True
+    assert check_grade(3)
 
 
 def test_check_grade_2():
-    assert check_grade(6) == True
+    assert check_grade(6)
 
 
 def test_check_grade_3():
-    assert check_grade(1) == True
+    assert check_grade(1)
 
 
 def test_check_grade_zero():
