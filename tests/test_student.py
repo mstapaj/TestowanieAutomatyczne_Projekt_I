@@ -6,24 +6,13 @@ from src.student import Student
 class TestStudent(unittest.TestCase):
     def setUp(self):
         self.temp = Student('Jan', 'Kowalski', 12)
-        self.temp_with_subjects = Student('Paweł', 'Pawłowski', 15)
-        self.temp_with_subjects.add_subject('Matematyka')
-        self.temp_with_subjects.add_subject('Polski')
-        self.temp_with_grades = Student('Paweł', 'Pawłowski', 15)
-        self.temp_with_grades.add_subject('Matematyka')
-        self.temp_with_grades.add_subject('Polski')
-        self.temp_with_grades.add_grade(1, 2)
-        self.temp_with_grades.add_grade(1, 5)
-        self.temp_with_grades.add_grade(2, 2)
-        self.temp_with_remarks = Student('Paweł', 'Pawłowski', 15)
-        self.temp_with_remarks.add_remark('Uwaga 1')
-        self.temp_with_remarks.add_remark('Uwaga 2')
-        self.temp_with_average = Student('Tomek', 'Pawłowski', 15)
-        self.temp_with_average.add_subject('Matematyka')
-        self.temp_with_average.add_subject('Polski')
-        self.temp_with_average.add_grade(1, 4)
-        self.temp_with_average.add_grade(1, 5)
-        self.temp_with_average.add_grade(2, 4)
+        self.temp_with_subjects = Student('Paweł', 'Pawłowski', 15,
+                                          [{'name': 'Matematyka'}, {'name': 'Polski'}])
+        self.temp_with_grades = Student('Paweł', 'Pawłowski', 15,
+                                        [{'name': 'Matematyka', 'grades': [2, 5]}, {'name': 'Polski', 'grades': [2]}])
+        self.temp_with_remarks = Student('Paweł', 'Pawłowski', 15, remarks=['Uwaga 1', 'Uwaga 2'])
+        self.temp_with_average = Student('Paweł', 'Pawłowski', 15,
+                                         [{'name': 'Matematyka', 'grades': [4, 5]}, {'name': 'Polski', 'grades': [4]}])
 
     # Testy get_details
     def test_get_details(self):

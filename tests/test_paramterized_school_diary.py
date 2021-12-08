@@ -8,11 +8,10 @@ class SchoolDiaryParamterizedFile(unittest.TestCase):
         # Przu odpalaniu testów za pomocą nose2 ścieżka do pliku powinna być taka "data/data_test_SchoolDiary"
         # Przu odpalaniu testów za pomocą pycharm ścieżka do pliku powinna być taka "../data/data_test_SchoolDiary"
         filetest = open("data/data_test_SchoolDiary")
-        temp = SchoolDiary()
-        temp.add_student('Jan', 'Kowalski', 12)
-        temp.add_student('Ola', 'Kot', 8)
-        temp.add_remark_to_student(1, 'Uwaga1')
-        temp.add_remark_to_student(1, 'Uwaga2')
+        temp = SchoolDiary([{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12, 'remarks': ['Uwaga1',
+                                                                                                'Uwaga2']},
+                            {'firstname': 'Ola', 'lastname': 'Kot', 'age': 8}])
+
         for line in filetest:
             if line.startswith("#") or line.startswith(" ") or line.startswith("\n"):
                 continue

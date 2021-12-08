@@ -2,9 +2,11 @@ from src.checks.checks_school_subject import check_subject_name, check_grade, ch
 
 
 class SchoolSubject:
-    def __init__(self, name):
+    def __init__(self, name, grades=None):
+        if grades is None:
+            grades = []
         self.name = name
-        self.grades = []
+        self.grades = grades
 
     def get_details(self):
         return {

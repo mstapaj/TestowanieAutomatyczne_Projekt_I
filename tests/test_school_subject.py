@@ -15,13 +15,8 @@ add_extension(is_length_of_grades_above_or_equal_2)
 class TestSchoolSubject(unittest.TestCase):
     def setUp(self):
         self.temp = SchoolSubject('Polski')
-        self.temp_with_grades = SchoolSubject('Matematyka')
-        self.temp_with_grades.add_grade(3)
-        self.temp_with_grades.add_grade(6)
-        self.temp_with_grades_2 = SchoolSubject('Angielski')
-        self.temp_with_grades_2.add_grade(1)
-        self.temp_with_grades_2.add_grade(4)
-        self.temp_with_grades_2.add_grade(6)
+        self.temp_with_grades = SchoolSubject('Matematyka', [3, 6])
+        self.temp_with_grades_2 = SchoolSubject('Angielski', [1, 4, 6])
 
     # Testy get_details
     def test_get_details(self):

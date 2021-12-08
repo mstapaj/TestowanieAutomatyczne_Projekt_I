@@ -7,25 +7,18 @@ from src.school_diary import SchoolDiary
 class TestSchoolDiary(unittest.TestCase):
 
     def setUp(self):
-        self.temp = SchoolDiary()
-        self.temp_with_students = SchoolDiary()
-        self.temp_with_students.add_student('Jan', 'Kowalski', 12)
-        self.temp_with_students.add_student('Ola', 'Kot', 17)
-        self.temp_with_student_with_subject = SchoolDiary()
-        self.temp_with_student_with_subject.add_student('Paweł', 'Pawłowski', 15)
-        self.temp_with_student_with_subject.add_subject_to_student(1, 'Matematyka')
-        self.temp_with_student_with_subject.add_subject_to_student(1, 'Polski')
-        self.temp_with_student_with_subject_with_grades = SchoolDiary()
-        self.temp_with_student_with_subject_with_grades.add_student('Paweł', 'Pawłowski', 15)
-        self.temp_with_student_with_subject_with_grades.add_subject_to_student(1, 'Matematyka')
-        self.temp_with_student_with_subject_with_grades.add_subject_to_student(1, 'Polski')
-        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 2)
-        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 1, 5)
-        self.temp_with_student_with_subject_with_grades.add_grade_in_student_in_subject(1, 2, 2)
-        self.temp_with_students_with_remarks = SchoolDiary()
-        self.temp_with_students_with_remarks.add_student('Paweł', 'Pawłowski', 15)
-        self.temp_with_students_with_remarks.add_remark_to_student(1, 'Uwaga 1')
-        self.temp_with_students_with_remarks.add_remark_to_student(1, 'Uwaga 2')
+        self.temp = SchoolDiary([])
+        self.temp_with_students = SchoolDiary([{'firstname': 'Jan', 'lastname': 'Kowalski', 'age': 12},
+                                               {'firstname': 'Ola', 'lastname': 'Kot', 'age': 17}])
+        self.temp_with_student_with_subject = SchoolDiary([{'firstname': 'Paweł', 'lastname': 'Pawłowski', 'age': 15,
+                                                            'subjects': [{'name': 'Matematyka'}, {'name': 'Polski'}]}])
+        self.temp_with_student_with_subject_with_grades = SchoolDiary([{'firstname': 'Paweł', 'lastname': 'Pawłowski',
+                                                                        'age': 15,
+                                                                        'subjects': [
+                                                                            {'name': 'Matematyka', 'grades': [2, 5]}
+                                                                            , {'name': 'Polski', 'grades': [2]}]}])
+        self.temp_with_students_with_remarks = SchoolDiary(
+            [{'firstname': 'Paweł', 'lastname': 'Pawłowski', 'age': 15, 'remarks': ['Uwaga 1', 'Uwaga 2']}])
 
     # Testy add_student
     def test_add_student(self):

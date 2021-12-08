@@ -8,8 +8,19 @@ import csv
 
 class SchoolDiary:
 
-    def __init__(self):
+    def __init__(self, students=None):
+        if students is None:
+            students = []
         self.students = []
+        for i in students:
+            if 'subjects' in i and 'remarks' in i:
+                self.students.append(Student(i['firstname'], i['lastname'], i['age'], i['subjects'], i['remarks']))
+            elif 'subjects' in i:
+                self.students.append(Student(i['firstname'], i['lastname'], i['age'], i['subjects']))
+            elif 'remarks' in i:
+                self.students.append(Student(i['firstname'], i['lastname'], i['age'], None, i['remarks']))
+            else:
+                self.students.append(Student(i['firstname'], i['lastname'], i['age']))
 
     def add_student(self, firstname, lastname, age):
         """

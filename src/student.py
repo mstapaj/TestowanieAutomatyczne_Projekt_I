@@ -4,12 +4,21 @@ from src.school_subject import SchoolSubject
 
 
 class Student:
-    def __init__(self, firstname, lastname, age):
+    def __init__(self, firstname, lastname, age, subjects=None, remarks=None):
+        if remarks is None:
+            remarks = []
+        if subjects is None:
+            subjects = []
         self.firstname = firstname
         self.lastname = lastname
         self.age = age
         self.subjects = []
-        self.remarks = []
+        for i in subjects:
+            if 'grades' in i:
+                self.subjects.append(SchoolSubject(i['name'], i['grades']))
+            else:
+                self.subjects.append(SchoolSubject(i['name'], []))
+        self.remarks = remarks
 
     def get_details(self):
         return {
