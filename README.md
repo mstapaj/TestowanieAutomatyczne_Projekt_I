@@ -1,7 +1,6 @@
 ## School Diary Project
 
-Project of a school diary where you can add, edit, delete students, subjects, grades, remarks, with the possibility of
-saving the data to a CSV file. The project was made for a Automated Testing course at the University of Gdańsk.
+Project of a school diary where you can add, edit, delete students, subjects, grades, remarks, with the ability to import/export the data to a CSV file. The project was made for a Automated Testing course at the University of Gdańsk.
 
 ## Project Status
 
